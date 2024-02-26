@@ -14,4 +14,6 @@ print (f"""El usuario {information[0]} tiene una {casa [1]} en estados unidos"""
 print (information [1])
 print (information[1:3]) 
 print (information[1:-2]) 
+print (information[::2])
+print (information[::-2]) 
 #También se puede acceder a una porción de la tupla, indicando (opcionalmente) desde el índice de inicio hasta el índice de fin: 
