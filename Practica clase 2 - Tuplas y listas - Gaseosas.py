@@ -22,6 +22,8 @@ precios = tuple((
     4200, 
     4800))
 
+
+print (" ")
 print ("******************************")
 print ("Menú de selección de productos")
 print ("******************************\n")
@@ -30,7 +32,7 @@ print ("******************************\n")
 #    print(i)            #Muestre 1 a 1 los productos de la lista.
 
 
-for i,val in enumerate(productos): #recorrer la tupla y sacarle su valor y la posicion donde está ese valor#
+for i,val in enumerate(productos): #recorrer la tupla y sacarle su valor y enumerate sirve para sacar la posicion donde está ese valor#
 
     print (f"""{i}. {val} ${precios[i]}""")
 
@@ -42,11 +44,13 @@ print (f"""Usuario, usted selecciono el producto {productos[opcion]} con un valo
 print ("\n")
 
 dinero=int(input("Ingrese la cantidad de dinero disponible: "))
+
+vueltos = dinero - precios[opcion]
 if dinero>=precios[opcion]:
-    vueltos = dinero - precios[opcion]
+    
     print(f"Usuario, usted compró el {productos[opcion]} con un valor de $ {precios[opcion]}, sus vueltos son ${vueltos}")
 else:
-    vueltos = dinero - precios[opcion]
+    
     print(f"Usuario el producto que desea comprar {productos[opcion]} con un valor de ${precios[opcion]}, le falta un total de ${-vueltos} ")
 
 
