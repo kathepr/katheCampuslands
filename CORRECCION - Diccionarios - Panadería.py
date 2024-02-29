@@ -51,16 +51,18 @@ print("3. Bebidas")
 print("\n")
 categoria = (int(input("Ingrese la categoría que desea consultar ")))
 
-keys_menu = list(menu.keys())   # Se trajo las keys del menú (salado, postres)
+keys_menu = list(menu.keys())   # Se trajo las keys del menú (salado, postres, bebidas)
 
-productos = menu[keys_menu[categoria - 1]]
-keys_productos=list(productos.keys())
+productos = menu[keys_menu[categoria - 1]]   #Variable productos = Accede al diccionario "menu", accede a la lista (salado,postres, bebidas)y tiene en cuenta la categoría que escoge la persona
+keys_productos=list(productos.keys())        #Keys_productos = Accede a las claves de la variable anterior: rollo de canela, almojabana, etc.
 
-for i, producto in enumerate(keys_productos):
-    print(f"{i+1}.{producto} = ${productos[producto]}")
+                                              #enumerate ( ) Es util cuando necesitas hacer referencia al indice como al valor. 
+for i, producto in enumerate(keys_productos): #enumerate ( ) se usa para repetir una secuencia y al mismo tiempo tener acceso al indice de cada elemento
+    
+    print(f"{i+1}.{producto} = ${productos[producto]}") #Se muestra el número (i+1), el producto = el precio  ¿¿¿ Porque ese es el precio ???
 
 opcion = int(input("¿Que producto desea? "))
-precio = productos[keys_productos[opcion-1]]
+precio = productos[keys_productos[opcion-1]] # Trae el precio de la opcion escogida. 
 
 cantidad = int(input("¿Cuantas unidades quiere? "))
 
