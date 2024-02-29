@@ -12,7 +12,6 @@ menu = {
             "Palito de queso":800,
             "Empanada":2000
             },
-
     "Postres":{
             "Torta de Chocolate":25000,
             "Cheesecake de fresa": 30000,
