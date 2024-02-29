@@ -50,10 +50,10 @@ print("3. Bebidas")
 print("\n")
 categoria = (int(input("Ingrese la categoría que desea consultar ")))
 
-keys_menu = list(menu.keys())   # Se trajo las keys del menú (salado, postres, bebidas)
+keys_menu = list(menu.keys())   # Convirtió las categorias del menú en listas, para poder acceder a ellas (salado, postres, bebidas)
 
 productos = menu[keys_menu[categoria - 1]]   #Variable productos = Accede al diccionario "menu", accede a la lista (salado,postres, bebidas)y tiene en cuenta la categoría que escoge el usuario
-keys_productos=list(productos.keys())        #Keys_productos = Convierte en una lista la variable anterior para tener acceso a sus llaves y en consecuencia, a sus valores.
+keys_productos=list(productos.keys())        #Keys_productos = Convierte en una lista las categorias para tener acceso a sus llaves y en consecuencia, a sus valores.
 
                                               #enumerate ( ) Es util cuando necesitas hacer referencia al indice como al valor. 
 for i, producto in enumerate(keys_productos): #enumerate ( ) se usa para repetir una secuencia y al mismo tiempo tener acceso al indice de cada elemento
