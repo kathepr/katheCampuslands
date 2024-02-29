@@ -60,6 +60,7 @@ keys_productos=list(productos.keys())        #Keys_productos = Convierte en una 
 for i, producto in enumerate(keys_productos): #enumerate ( ) se usa para repetir una secuencia y al mismo tiempo tener acceso al indice de cada elemento
     
     print(f"{i+1}.{producto} = ${productos[producto]}") #Se muestra el número (i+1), el producto = trae el valor de la llave (es decir, el precio)
+                                                        
 
 opcion = int(input("¿Que producto desea? "))
 precio = productos[keys_productos[opcion-1]] # Trae el valor de la opcion escogida (precio). 
