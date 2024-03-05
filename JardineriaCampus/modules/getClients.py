@@ -39,12 +39,12 @@ def getAllClientCreditCiudad(limiteCredit, ciudad):
 
 #ARREGLAR ESTA PARTE DEL CÓDIGO - OJO: 
 def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
-    clientZone = list()
+    clientZone = []
     for val in cli.clientes:
         if(
-            val.get('pais') == pais and
-            (val.get('region') == region and val.get('region') == None) or
-            (val.get('ciudad') == ciudad and val.get('ciudad') == None)
+            val.get('pais') == pais or
+            (val.get('region') == region or val.get('region') == None) and
+            (val.get('ciudad') == ciudad or val.get('ciudad') == None)
         ):
             clientZone.append(val)
     return clientZone
