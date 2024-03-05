@@ -48,3 +48,42 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
         ):
             clientZone.append(val)
     return clientZone
+
+def getAllApellido(apellido):
+    clientApellido = []
+    for val in cli.clientes:
+        if val.get ('apellido_contacto') == apellido:
+            clientApellido.append(val)
+    return clientApellido
+
+
+def getAllFax(fax):
+    clientFax = []
+    for val in cli.clientes:
+        if val.get('fax') == fax:
+            clientFax.append(val)
+    return clientFax
+
+
+def getAllTelefono(telefono):
+    clienteTelefono = []
+    for val in cli.clientes:
+        if val.get('telefono') == telefono:
+            clienteTelefono.append(val)
+    return clienteTelefono
+
+
+def getAllDireccion(direccion):
+    clientDireccion = []
+    for val in cli.clientes:
+        if val.get('linea_direccion1') == direccion:
+            clientDireccion.append(val)
+    return clientDireccion
+
+
+def getAllPostal(postal):
+    clientPostal = []
+    for val in cli.clientes:
+        if val.get('codigo_postal') == postal:
+            clientPostal.append(val)
+    return clientPostal

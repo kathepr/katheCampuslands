@@ -10,4 +10,14 @@ import modules.getClients as cliente
 #print(cliente.getAllClientCreditCiudad(5000, "Humanes"))
 #print(cliente.getAllClientPaisRegionCiudad("France", None, "Paris"))
 
-print(tabulate(cliente.getAllClientPaisRegionCiudad("Australia"),tablefmt="grid"))
+#print(tabulate(cliente.getAllClientPaisRegionCiudad("Australia"),tablefmt="grid"))
+
+#print(tabulate(cliente.getAllApellido("GoldFish"),tablefmt="grid"))
+
+#print (tabulate(cliente.getAllFax('5557410346'), tablefmt="grid"))
+
+#print (tabulate(cliente.getAllTelefono('5552323129'),tablefmt="grid"))
+
+#print (tabulate(cliente.getAllDireccion('Wall-e Avenue'), tablefmt="grid"))
+
+print(tabulate(cliente.getAllPostal('24010'), tablefmt="grid"))
