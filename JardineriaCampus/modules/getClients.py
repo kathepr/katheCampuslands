@@ -87,3 +87,15 @@ def getAllPostal(postal):
         if val.get('codigo_postal') == postal:
             clientPostal.append(val)
     return clientPostal
+
+
+
+def getAllEspañoles():
+    nombresEspañoles = []
+    for val in cli.clientes:
+        if val.get("pais") == "Spain":
+            nombresEspañoles.append({
+                "nombre": val.get("nombre_cliente"),
+                "pais": val.get("pais")
+            })
+    return nombresEspañoles
