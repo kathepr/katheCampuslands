@@ -61,7 +61,31 @@ import modules.getPago as pago
 #PUNTO 10: Listado con el código de pedido, código cliente, fecha esperada
 #          fecha de entrega de pedidos cuya fecha de entrega ha sido al menos dos
 #          días antes de la fecha esperada.
+#print(tabulate(pedido.getAllPedidoEntregadoDosDiasAntes(), tablefmt = "grid"))
+
+
+#PUNTO 11: Devuelve listado con pedidos rechazados en 2009
+#print(tabulate(pedido.getAllPedidosRechazados(), tablefmt = "rounded_grid"))
 
 
 
-#PUNTO 11: Devuelve fecha con pedidos rechazados en 2009
+
+
+
+
+#PUNTO 12: Devuelve un listado de pedidos ENTREGADOS en el mes de Enero.
+# 
+#  
+
+#PUNTO 13: Listado con todos los pagos que se realizaron en 2008
+#          mediante Paypal. ORDENE RESULTADO DE MAYOR A MENOR. 
+
+
+#PUNTO 14: Listado con TODAS las formas de pago. 
+#          NO DEBEN APARECER FORMAS DE PAGO REPETIDAS. 
+
+
+#PUNTO 15: Listado de productos de GAMA ORNAMENTALS y que tienen más
+#          de 100 unidades en stock. 
+#          DEBE ORDENAR EL LISTADO: precio de venta, mostrar en primer lugar
+#          de mayor precio. 
