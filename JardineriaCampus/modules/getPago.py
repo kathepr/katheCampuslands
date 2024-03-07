@@ -12,6 +12,6 @@ def getAllPagoYear ():
             "codigo_cliente": codigo,
             "fecha_pago": val.get("fecha_pago")
         })
-        codigoVisto.add(codigo) #add se usa para añadir elementos a con conjuntos set
+        codigoVisto.add(codigo) #add se usa para añadir elementos a conjuntos set
         
     return codigoPagoYear
