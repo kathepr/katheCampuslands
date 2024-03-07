@@ -50,4 +50,18 @@ import modules.getPago as pago
 
 #PUNTO 8: Listado con código de clientes que realizaron pago en 2008. 
 #         Elimine códigos que aparezcan repetidos
-print(tabulate(pago.getAllPagoYear(), tablefmt= "grid"))
+#print(tabulate(pago.getAllPagoYear(), tablefmt= "grid"))
+
+
+#PUNTO 9: Listado con codigo de pedido, codigo cliente, fecha esperada,
+# fecha de entrega de los pedidos que no han sido entregados a tiempo.
+#print(tabulate(pedido.getAllPedidosEntregadosAtrasadosDeTiempo(), tablefmt= "grid"))
+
+
+#PUNTO 10: Listado con el código de pedido, código cliente, fecha esperada
+#          fecha de entrega de pedidos cuya fecha de entrega ha sido al menos dos
+#          días antes de la fecha esperada.
+
+
+
+#PUNTO 11: Devuelve fecha con pedidos rechazados en 2009
