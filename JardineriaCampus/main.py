@@ -50,5 +50,4 @@ import modules.getPago as pago
 
 #PUNTO 8: Listado con código de clientes que realizaron pago en 2008. 
 #         Elimine códigos que aparezcan repetidos
-
 print(tabulate(pago.getAllPagoYear(), tablefmt= "grid"))
