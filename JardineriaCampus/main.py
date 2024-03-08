@@ -6,6 +6,43 @@ import modules.getEmpleados as empleado
 import modules.getPedido as pedido
 import modules.getPago as pago
 
+
+
+
+if(__name__ == "__main__"):
+    print("""
+    Menu Principal
+    1. Cliente
+    2. Oficina
+    3. Empleado
+    4. Pedidos""")
+    
+    opcion = int(input("\nSeleccione una de las opciones "))
+    if opcion == 1:
+        cliente.menu()
+    elif opcion == 2:
+        cliente.menu()
+    elif opcion == 3:
+        cliente.menu()
+    elif opcion == 4:
+        cliente.menu()
+
+
+
+
+#def menu():
+#    contador = 1
+#    print("Menu Principal")
+#    for nombre, objeto in sys.modules.items():
+#        if nombre.startswith("modules"):
+#            modulo = getattr(objeto, "name", None)
+#            if(modulo != "modules"):
+#                print(f"""{contador}. {modulo.split("get")[-1]} """)
+#                contador += 1
+
+
+#menu()
+
 #El primer archivo, está importando el segundo y el segundo al tercero
 #De esta forma, tenemos acceso al contenido de los tres archivos. 
 
@@ -76,9 +113,11 @@ import modules.getPago as pago
 
 
 
-#FALTA: 
+#FALTA HACERLO: 
 #PUNTO 13: Listado con todos los pagos que se realizaron en 2008
 #          mediante Paypal. ORDENE RESULTADO DE MAYOR A MENOR. 
+#print(tabulate(pago.getAllPagosPaypalYear(), tablefmt = "rounded_grid"))
+
 
 
 #PUNTO 14: Listado con TODAS las formas de pago. 

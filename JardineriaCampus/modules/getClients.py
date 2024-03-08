@@ -1,4 +1,5 @@
-import storage.cliente as cli #cli = abreviación de cliente  
+from tabulate import tabulate
+import storage.cliente as cli #cli = abreviación de cliente 
 
 
 
@@ -13,8 +14,8 @@ def getAllClientName():
     clienteName = []
     for val in cli.clientes:
         codigoName = dict({
-            "codigo_cliente": val.get('codigo_cliente'),
-            "nombre_cliente": val.get('nombre_cliente')
+            "codigo": val.get('codigo_cliente'),
+            "nombre": val.get('nombre_cliente')
         })
         clienteName.append(codigoName)
     return clienteName
@@ -23,16 +24,26 @@ def getOneClientCodigo(codigo):
     clienteName = []
     for val in cli.clientes:
         if(val.get('codigo_cliente')== codigo):
-            return {
-                "codigo_cliente": val.get('codigo_cliente'),
-                "nombre_cliente": val.get('nombre_cliente')
-            }
+            return [{
+                "codigo": val.get('codigo_cliente'),
+                "nombre": val.get('nombre_cliente')
+            }]
 
 def getAllClientCreditCiudad(limiteCredit, ciudad):
     clientCredit = list()
     for val in cli.clientes:
         if(val.get('limite_credito') >= limiteCredit and val.get('ciudad')==ciudad):
-            clientCredit.append(val)
+            clientCredit.append({
+                "Codigo": val.get("codigo_cliente"),
+                "Responsable": val.get("nombre_cliente"),
+                "Director": f"{val.get('nombre_contacto')} {val.get('apellido_contacto')}",
+                "Telefono": val.get("telefono"),
+                "Fax": val.get("fax"),
+                "Dirección": f"{val.get('linea_direccion1')} {val.get('linea_direccion2')}",
+                "Origen": f"{val.get('ciudad')} {val.get('region')}",
+                "Código del asesor": val.get("codigo_empleado_rep_ventas"),
+                "Crédito": val.get("limite_credito")
+                })
     return clientCredit
 
 
@@ -99,3 +110,27 @@ def getAllEspañoles():
                 "pais": val.get("pais")
             })
     return nombresEspañoles
+
+
+
+
+
+
+def menu():
+    print("""
+    Reportes de los clientes:
+        1. Obtener todos los clientes (codigo y nombre)
+        2. Obtener un cliente por el código (código y nombre)
+        3. Obtener toda la información de un cliente segun su limite crédito y ciudad que pertene (ejemplo: 3000.0, San Francisco)
+
+    """)
+    opcion = int(input("\nSeleccione una de las opciones "))
+    if opcion == 1:
+        print(tabulate(getAllClientName(), headers = "keys", tablefmt= "rounded_grid"))
+    elif opcion == 2:
+        codigoCliente = input("Ingrese el código del cliente ")
+        print(tabulate(getOneClientCodigo(), headers = "keys", tablefmt= "rounded_grid"))
+    elif opcion == 3:
+        limite = float(input("Ingrese el limite de credito de los clientes que desea visualizar: "))
+        ciudad = input("Ingrese el nombre de la ciudad que desea filtrar: ")
+        print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers = "keys", tablefmt= "rounded_grid"))
