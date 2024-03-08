@@ -129,7 +129,7 @@ def menu():
         print(tabulate(getAllClientName(), headers = "keys", tablefmt= "rounded_grid"))
     elif opcion == 2:
         codigoCliente = input("Ingrese el código del cliente ")
-        print(tabulate(getOneClientCodigo(), headers = "keys", tablefmt= "rounded_grid"))
+        print(tabulate(getOneClientCodigo(codigoCliente), headers = "keys", tablefmt= "rounded_grid"))
     elif opcion == 3:
         limite = float(input("Ingrese el limite de credito de los clientes que desea visualizar: "))
         ciudad = input("Ingrese el nombre de la ciudad que desea filtrar: ")
