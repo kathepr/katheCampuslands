@@ -11,21 +11,30 @@ import modules.getPago as pago
 
 if(__name__ == "__main__"):
     print("""
-    Menu Principal
-    1. Cliente
-    2. Oficina
-    3. Empleado
-    4. Pedidos""")
+          
+    *******************************
+            Menu Principal
+    *******************************
+          
+            1. Cliente
+            2. Oficina
+            3. Empleado
+            4. Pedidos
+            5. Pago
+          
+          """)
     
     opcion = int(input("\nSeleccione una de las opciones "))
     if opcion == 1:
         cliente.menu()
     elif opcion == 2:
-        cliente.menu()
+        oficina.menu()
     elif opcion == 3:
-        cliente.menu()
+        empleado.menu()
     elif opcion == 4:
-        cliente.menu()
+        pedido.menu()
+    elif opcion == 4:
+        pago.menu()
 
 
 
