@@ -84,4 +84,5 @@ def getAllPedidosEnero():
         if val.get("estado") == "Entregado":
             if val.get("fecha_entrega") is not None and val.get("fecha_entrega")[5:7] == "01":
                 pedidoEnero.append(val)
+    print(pedidoEnero)
     return pedidoEnero

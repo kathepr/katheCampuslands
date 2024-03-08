@@ -116,7 +116,7 @@ import modules.getPago as pago
 #FALTA HACERLO: 
 #PUNTO 13: Listado con todos los pagos que se realizaron en 2008
 #          mediante Paypal. ORDENE RESULTADO DE MAYOR A MENOR. 
-#NO FUNCIONA ESTA DESGRACIADA:    print(tabulate(pago.getAllPagosPaypalYear(), tablefmt = "rounded_grid"))
+#print(tabulate(pago.getAllPago2008(), tablefmt = "rounded_grid"))
 
 
 
@@ -124,7 +124,7 @@ import modules.getPago as pago
 
 #PUNTO 14: Listado con TODAS las formas de pago. 
 #          NO DEBEN APARECER FORMAS DE PAGO REPETIDAS. 
-print(tabulate(pago.getAllFormasPago(), tablefmt = "grid"))
+#print(tabulate(pago.getAllFormasPago(), tablefmt = "rounded_grid"))
 
 
 #PUNTO 15: Listado de productos de GAMA ORNAMENTALS y que tienen más
