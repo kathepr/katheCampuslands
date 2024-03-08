@@ -124,6 +124,7 @@ import modules.getPago as pago
 
 #PUNTO 14: Listado con TODAS las formas de pago. 
 #          NO DEBEN APARECER FORMAS DE PAGO REPETIDAS. 
+print(tabulate(pago.getAllFormasPago(), tablefmt = "grid"))
 
 
 #PUNTO 15: Listado de productos de GAMA ORNAMENTALS y que tienen más

@@ -1,7 +1,7 @@
 import storage.pago as pay   
 from datetime import datetime
 
-def getAllPagoYear ():
+def getAllPagoYear():
     codigoPagoYear = []
     codigoVisto = set() # set se utiliza para crear un conjunto, que es una colección desordenada y sin elementos duplicados
     for val in pay.pago:
@@ -16,3 +16,14 @@ def getAllPagoYear ():
         
     return codigoPagoYear
 
+
+
+def getAllFormasPago():
+    formasPago = []
+    formasPagoVistas = set()
+    for val in pay.pago:
+        formasPago.append ({
+            "Forma de Pago":val.get("forma_pago")
+        }) 
+        formasPagoVistas.add(val.get("forma_pago"))
+    return formasPagoVistas
