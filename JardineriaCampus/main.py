@@ -68,14 +68,14 @@ import modules.getPago as pago
 #print(tabulate(pedido.getAllPedidosRechazados(), tablefmt = "rounded_grid"))
 
 
-
-
-
-
-
 #PUNTO 12: Devuelve un listado de pedidos ENTREGADOS en el mes de Enero.
-# 
-#  
+#print(tabulate(pedido.getAllPedidosEnero(), tablefmt = "rounded_grid")) 
+
+
+
+
+
+
 
 #PUNTO 13: Listado con todos los pagos que se realizaron en 2008
 #          mediante Paypal. ORDENE RESULTADO DE MAYOR A MENOR. 

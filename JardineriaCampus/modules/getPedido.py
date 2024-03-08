@@ -75,3 +75,13 @@ def getAllPedidosRechazados():
             if val.get("fecha_entrega")[:4] == "2009":
                 pedidoRechazado.append (val)
     return pedidoRechazado
+
+
+def getAllPedidosEnero():
+    pedidoEnero = []
+
+    for val in ped.pedido:
+        if val.get("estado") == "Entregado":
+            if val.get("fecha_entrega") is not None and val.get("fecha_entrega")[5:7] == "01":
+                pedidoEnero.append(val)
+    return pedidoEnero
