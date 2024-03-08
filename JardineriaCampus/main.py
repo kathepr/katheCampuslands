@@ -76,7 +76,7 @@ import modules.getPago as pago
 
 
 
-
+#FALTA: 
 #PUNTO 13: Listado con todos los pagos que se realizaron en 2008
 #          mediante Paypal. ORDENE RESULTADO DE MAYOR A MENOR. 
 
