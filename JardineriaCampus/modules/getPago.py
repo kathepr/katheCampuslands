@@ -16,16 +16,3 @@ def getAllPagoYear ():
         
     return codigoPagoYear
 
-
-def getAllPagosPaypalYear():
-    pagoPaypalYear = []
-    
-    for val in pay.pago:
-        fecha_pago = val.get("fecha_pago")
-        forma_pago = val.get("forma_pago")
-        if fecha_pago is not None:
-            fecha_pago_dt = datetime.strptime(fecha_pago, '%Y-%m-%d')
-            if fecha_pago_dt.year == "2008" and forma_pago == "Paypal":
-                pagoPaypalYear.append(val)
-
-    return pagoPaypalYear
