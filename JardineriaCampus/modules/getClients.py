@@ -240,4 +240,6 @@ def menu():
         print(tabulate(getAllPostal(postal), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 10:
         print(tabulate(getAllEspañoles(), headers = "keys", tablefmt = "rounded_grid"))
+    else:
+        print("\nEsa opción NO existe")
 
