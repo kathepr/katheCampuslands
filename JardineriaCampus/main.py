@@ -60,7 +60,7 @@ if(__name__ == "__main__"):
 #print(cliente.getAllClientCreditCiudad(5000, "Humanes"))
 #print(cliente.getAllClientPaisRegionCiudad("France", None, "Paris"))
 
-#print(tabulate(cliente.getAllClientPaisRegionCiudad("Australia"),tablefmt="grid"))
+#print(tabulate(cliente.getAllClientPaisRegionCiudad("Australia"),tablefmt="rounded_grid"))
 
 #print(tabulate(cliente.getAllApellido("GoldFish"),tablefmt="grid"))
 
