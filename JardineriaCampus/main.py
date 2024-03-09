@@ -16,11 +16,11 @@ if(__name__ == "__main__"):
             Menu Principal
     *******************************
           
-            1. Cliente
-            2. Oficina
-            3. Empleado
+            1. Clientes
+            2. Oficinas
+            3. Empleados
             4. Pedidos
-            5. Pago
+            5. Pagos
           
           """)
     
@@ -33,8 +33,10 @@ if(__name__ == "__main__"):
         empleado.menu()
     elif opcion == 4:
         pedido.menu()
-    elif opcion == 4:
+    elif opcion == 5:
         pago.menu()
+    else:
+        print("\nEsa opción NO existe")
 
 
 
