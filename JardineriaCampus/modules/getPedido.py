@@ -113,12 +113,14 @@ def getAllPedidosEnero():
 
 
 def menu():
-    print("""
+    while True:
+        print("""
 
                         ***********************************
                                 Reportes de Pedidos
                         ***********************************
-    
+
+    0. Regresar al menú principal. 
     1. Obtener información de los distintos estados por los que puede pasar un pedido
     2. Obtener información de los pedidos entregados pero que experimentaron retrasos en la entrega
     3. Obtener información de los pedidos entregados que llegaron antes de la fecha estimada
@@ -129,16 +131,16 @@ def menu():
 
      """)
 
-    opcion = int(input("Seleccione una de las opciones "))
-    if opcion == 1:
-        print(tabulate(getEstadoPedido(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion ==2:
-        print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion ==3:
-        print(tabulate(getAllPedidoEntregadoDosDiasAntes(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 4:
-        print(tabulate(getAllPedidosRechazados(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 5:
-        print(tabulate(getAllPedidosEnero(), headers = "keys", tablefmt = "rounded_grid"))
-    else:
-        print("\nEsa opción NO existe")
+        opcion = int(input("Seleccione una de las opciones "))
+        if opcion == 1:
+            print(tabulate(getEstadoPedido(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion ==2:
+            print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion ==3:
+            print(tabulate(getAllPedidoEntregadoDosDiasAntes(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 4:
+            print(tabulate(getAllPedidosRechazados(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 5:
+            print(tabulate(getAllPedidosEnero(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 0:
+            break

@@ -61,12 +61,13 @@ def getAllFormasPago():
 
 
 def menu():
-    print("""
+    while True: 
+        print("""
 
                                 *****************************
                                        Reportes de Pagos
                                 *****************************
-          
+    0. Regresar al menú principal     
     1. Obtener los códigos de los clientes que realizaron algún pago en el 2008
     2. Obtener información de todos los pagos que se realizaron en el año 2008 mediante Paypal
     3. Obtener información de las formas de pago
@@ -76,12 +77,12 @@ def menu():
 
 
     """)
-    opcion = int(input("Seleccione una de las opciones "))
-    if opcion == 1:
-        print(tabulate(getAllPagoYear(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 2:
-        print(tabulate(getAllPago2008(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 3:
-        print(tabulate(getAllFormasPago(), headers = "keys", tablefmt = "rounded_grid"))
-    else:
-        print("\nLa opción NO existe")
+        opcion = int(input("Seleccione una de las opciones "))
+        if opcion == 1:
+            print(tabulate(getAllPagoYear(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 2:
+            print(tabulate(getAllPago2008(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 3:
+            print(tabulate(getAllFormasPago(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 0:
+            break

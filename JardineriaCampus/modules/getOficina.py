@@ -34,12 +34,14 @@ def getAllCiudadTelefono (pais):
 
 
 def menu():
-    print("""
+    while True: 
+        print("""
 
                             ****************************************
                                     Reportes de las Oficinas
                             ****************************************
    
+           0. Regresar al menú principal
            1. Obtener información del código y la ciudad donde se encuentran todas las oficinas
            2. Obtener información de la ciudad y telefono de las oficinas por pais (ejemplo: España)
 
@@ -47,12 +49,11 @@ def menu():
 
 
     """)
-
-    opcion = int(input("\nSeleccione una de las opciones "))
-    if opcion == 1:
-        print(tabulate(getAllCodigoCiudad(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion ==2:
-        pais = input("Ingrese el pais correspondiente al listado de oficinas que desea consultar: ")
-        print(tabulate(getAllCiudadTelefono(pais), headers = "keys", tablefmt = "rounded_grid"))
-    else:
-        print("\nEsa opción NO existe")
+        opcion = int(input("\nSeleccione una de las opciones "))
+        if opcion == 1:
+            print(tabulate(getAllCodigoCiudad(), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion ==2:
+            pais = input("Ingrese el pais correspondiente al listado de oficinas que desea consultar: ")
+            print(tabulate(getAllCiudadTelefono(pais), headers = "keys", tablefmt = "rounded_grid"))
+        elif opcion == 0:
+            break

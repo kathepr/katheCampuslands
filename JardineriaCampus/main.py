@@ -8,36 +8,39 @@ import modules.getPago as pago
 
 
 
+if __name__ == "__main__":
 
-if(__name__ == "__main__"):
-    print("""
+    while True: 
+        print("""
           
-    *******************************
-            Menu Principal
-    *******************************
+        *******************************
+                 Menu Principal
+        *******************************
           
             1. Clientes
             2. Oficinas
             3. Empleados
             4. Pedidos
             5. Pagos
+            0. Salir
           
           """)
-    
-    opcion = int(input("\nSeleccione una de las opciones "))
-    if opcion == 1:
-        cliente.menu()
-    elif opcion == 2:
-        oficina.menu()
-    elif opcion == 3:
-        empleado.menu()
-    elif opcion == 4:
-        pedido.menu()
-    elif opcion == 5:
-        pago.menu()
-    else:
-        print("\nEsa opción NO existe")
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if opcion == 1:
+            cliente.menu()
+        elif opcion == 2:
+            oficina.menu()
+        elif opcion == 3:
+            empleado.menu()
+        elif opcion == 4:
+            pedido.menu()
+        elif opcion == 5:
+            pago.menu()
+        elif opcion == 0:
+            break
 
+
+    
 
 
 
