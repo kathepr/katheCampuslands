@@ -5,6 +5,7 @@ import modules.getOficina as oficina
 import modules.getEmpleados as empleado
 import modules.getPedido as pedido
 import modules.getPago as pago
+import modules.getProducto as producto
 
 
 
@@ -15,13 +16,14 @@ if __name__ == "__main__":
           
         *******************************
                  Menu Principal
-        *******************************
+        *******************************6
           
             1. Clientes
             2. Oficinas
             3. Empleados
             4. Pedidos
             5. Pagos
+            6. Productos
             0. Salir
           
           """)
@@ -36,6 +38,8 @@ if __name__ == "__main__":
             pedido.menu()
         elif opcion == 5:
             pago.menu()
+        elif opcion == 6:
+            producto.menu()
         elif opcion == 0:
             break
 
