@@ -1,0 +1,18 @@
+[
+    {
+        "codigo": 789,
+        "nombre": "Karen",
+        "apellido": "Celis"
+    },
+    {
+        "codigo": 4444,
+        "nombre": "Jholver",
+        "apellido": "Pardo"
+    },
+    {
+        "codigo": 999,
+        "nombre": "Andres",
+        "apellido": "Lizarazo",
+        "id": 3
+    }
+]
