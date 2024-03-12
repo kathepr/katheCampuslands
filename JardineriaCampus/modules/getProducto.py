@@ -12,11 +12,12 @@ def getAllStockPriceGama():
     for val in pro.producto:
         if val.get("gama") == "Ornamentales" and val.get("cantidad_en_stock") >= 100:
             gamaStock.append({
-             "Código del Producto": val.get("codigo_producto"),
+            "Código del Producto": val.get("codigo_producto"),
             "Nombre del Producto": val.get("nombre"),
             "Gama": val.get("gama"),
             "Dimensiones": val.get("dimensiones"),
             "Proveedor": val.get("proveedor"),
+            "Descripcion": val.get("descripcion"),
             "Cantidad en Stock": val.get("cantidad_en_stock"),
             "Precio de Venta": val.get("precio_venta"),
             "Precio Proveedor": val.get("precio_proveedor")
