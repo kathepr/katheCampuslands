@@ -1,0 +1,17 @@
+[   
+    {
+        "codigo": 123,
+        "nombre": "Miguel Angel",
+        "apellido": "Castro Escamilla"
+    },
+    {
+        "codigo": 489,
+        "nombre": "Maria Sol",
+        "apellido": "Pizón"
+    }
+    {
+        "codigo": 4444,
+        "nombre": "J",
+        "apellido": "Pizón"
+    }
+]
