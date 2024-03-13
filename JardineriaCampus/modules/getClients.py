@@ -207,7 +207,7 @@ def getAllMadrid():
                })
     return madridRepresentanteVentas
 
-
+#MULTITABLA:
 #FUNCIÓN 12:
 def getAllClientsRepresentante():
     representanteCodigo = []
