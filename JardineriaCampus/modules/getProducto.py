@@ -60,8 +60,8 @@ def menu():
                 "proveedor": input("Ingrese el proveedor del producto: "),
                 "descripcion": input("Ingrese la descripción del producto: "),
                 "cantidad_en_stock": int(input("Ingrese la cantidad en stock: ")),
-                "precio_venta": float(input("Ingrese el precio de venta del producto: ")),
-                "precio_proveedor": float (input("Ingrese el precio del proveedor: "))
+                "precio_venta": int(input("Ingrese el precio de venta del producto: ")),
+                "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
             }
             psProducto.postProducto(producto)
             print("Producto Guardado")
