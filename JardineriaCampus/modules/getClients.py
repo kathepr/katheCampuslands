@@ -1,5 +1,6 @@
 from tabulate import tabulate
 import storage.cliente as cli #cli = abreviación de cliente 
+import storage.empleado as em
 
 
 
@@ -187,7 +188,46 @@ def getAllEspañoles():
 
 
 
+#FUNCIÓN 11:
+def getAllMadrid():
+    madridRepresentanteVentas = []
+    for val in cli.clientes:
+         if val.get("ciudad") == "Madrid" and (val.get("codigo_empleado_rep_ventas") == 11 or val.get("codigo_empleado_rep_ventas") == 30):
+               madridRepresentanteVentas.append({
+                "Código": val.get("codigo_cliente"),
+                "Responsable": val.get("nombre_cliente"),
+                "Director": f"{val.get('nombre_contacto')} {val.get('apellido_contacto')}",
+                "Teléfono": val.get("telefono"),
+                "Fax": val.get("fax"),
+                "Dirección": f"{val.get('linea_direccion1')} {val.get('linea_direccion2')}",
+                "Origen": f"{val.get('ciudad')} {val.get('region')} {val.get('pais')}",
+                "Código Postal": val.get("codigo_postal"),
+                "Código del Asesor": val.get("codigo_empleado_rep_ventas"),
+                "Crédito": val.get("limite_credito")
+               })
+    return madridRepresentanteVentas
 
+
+#FUNCIÓN 12:
+def getAllClientsRepresentante():
+    representanteCodigo = []
+    for cliente in cli.clientes:
+         for empleados in em.empleados:
+            if empleados.get("puesto") == "Representante Ventas" and (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
+                representanteCodigo.append({
+                "Nombre del Cliente": cliente.get("nombre_cliente"),
+                # "Código del Asesor": cliente.get("codigo_empleado_rep_ventas"),
+                # "Codigo del empleado": empleados.get("codigo_empleado"),
+                # "Nombre del Asesor": f"{empleados.get('nombre')} {empleados.get('apellido1')}",
+                "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
+              })
+              
+    return representanteCodigo
+         
+
+
+
+    
 
 
 def menu():
@@ -207,7 +247,11 @@ def menu():
         7. Obtener toda la información del cliente por el número de Telefono (por ejemplo: 5556901745)
         8. Obtener toda la información del cliente por su dirección principal (por ejemplo: Oaks Avenue nº22)
         9. Obtener toda la información del cliente por el código postal (por ejemplo: 28930)
-        10. Obtener un listado de los nombres de todos los clientes españoles  
+        10.Obtener un listado de los nombres de todos los clientes españoles  
+        11.Obtener un listado con clientes de Madrid y cuyo representante de ventas tenga el código 11 o 30.
+        12.Obtener un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas
+          
+
 
         """)
     opcion = int(input("\nSeleccione una de las opciones "))
@@ -242,6 +286,10 @@ def menu():
             print(tabulate(getAllPostal(postal), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 10:
             print(tabulate(getAllEspañoles(), headers = "keys", tablefmt = "rounded_grid"))
+    elif opcion == 11:
+            print(tabulate(getAllMadrid(), headers = "keys", tablefmt = "rounded_grid"))
+    elif opcion ==12:
+            print(tabulate(getAllClientsRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 0:
             break
     
