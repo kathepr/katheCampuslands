@@ -9,7 +9,7 @@ import modules.postProducto as psProducto
 #Listado debe estar ordenado pro precio de venta
 #Mostrar en primer lugar los de mayor precio.
 def getAllData():
-    #json-server storage/producto.json -b 5012
+    #json-server storage/producto.json -b 5009
     peticion = requests.get("Remote: http://172.16.100.114:5009")
     data = peticion.json()
     return(data)
