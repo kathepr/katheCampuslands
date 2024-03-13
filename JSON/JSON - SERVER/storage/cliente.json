@@ -1,4 +1,4 @@
-[   
+[
     {
         "codigo": 123,
         "nombre": "Miguel Angel",
@@ -7,6 +7,12 @@
     {
         "codigo": 489,
         "nombre": "Maria Sol",
-        "apellido": "Pizón"
+        "apellido": "Piz\u00f3n"
+    },
+    {
+        "codigo": 888,
+        "nombre": "Monica",
+        "apellido": "Ruiz",
+        "id": 3
     }
 ]
