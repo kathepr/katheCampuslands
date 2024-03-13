@@ -2,6 +2,7 @@ from tabulate import tabulate
 import json
 import requests
 import modules.postProducto as psProducto
+import modules.getGamas as gG
 
 #FUNCION 1:
 #Devuelve listado con todos los productos que pertenecen a gama Ornamentales
@@ -55,7 +56,7 @@ def menu():
             producto = {
                 "codigo_producto": input("Ingrese el codigo del producto: "),
                 "nombre": input("Ingrese el nombre del producto: "),
-                "gama": input("Ingrese la gama del producto: "),
+                "gama": input("\t\n".join([f"{i}. {val}" for i, val in enumerate(gG.getAllNombre())])),
                 "dimensiones": input("Ingrese las dimensiones del producto: "),
                 "proveedor": input("Ingrese el proveedor del producto: "),
                 "descripcion": input("Ingrese la descripción del producto: "),
