@@ -1,8 +1,6 @@
 from tabulate import tabulate
-import json
 import requests
-import modules.postProducto as psProducto
-import modules.getGamas as gG
+import os
 
 #FUNCION 1:
 #Devuelve listado con todos los productos que pertenecen a gama Ornamentales
@@ -11,60 +9,53 @@ import modules.getGamas as gG
 #Mostrar en primer lugar los de mayor precio.
 def getAllData():
     #json-server storage/producto.json -b 5009
-    peticion = requests.get("Remote: http://172.16.100.114:5009")
+    peticion = requests.get("http://172.16.100.114:5009")
     data = peticion.json()
     return(data)
 
 
 
-def getAllStockPriceGama():
-    gamaStock = []
+def getAllStockPriceGama(gama, stock):
+    condiciones = []
     for val in getAllData():
-        if val.get("gama") == "Ornamentales" and val.get("cantidad_en_stock") >= 100:
-            gamaStock.append({
-            "Código del Producto": val.get("codigo_producto"),
-            "Nombre del Producto": val.get("nombre"),
-            "Gama": val.get("gama"),
-            "Dimensiones": val.get("dimensiones"),
-            "Proveedor": val.get("proveedor"),
-            "Cantidad en Stock": val.get("cantidad_en_stock"),
-            "Precio de Venta": val.get("precio_venta"),
-            "Precio Proveedor": val.get("precio_proveedor")
-        })
-    gamaStockordenada= sorted(gamaStock, key=lambda precio: precio["Precio de Venta"], reverse = True)
-    return gamaStockordenada
+        if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
+            condiciones.append(val)
+    def price(val):
+        return val.get("precio_venta")    
+    condiciones.sort(key=price, reverse=True)
+    for i, val in enumerate(condiciones):
+        condiciones[i] = {
+                "codigo": val.get("codigo_producto"),
+                "venta": val.get("precio_venta"),
+                "nombre": val.get("nombre"),
+                "gama": val.get("gama"),
+                "dimensiones": val.get("dimensiones"),
+                "proveedor": val.get("proveedor"),
+                "descripcion": f'{val.get("descripcion")[:5]}...' if condiciones[i].get("descripcion") else None,
+                "stock": val.get("cantidad_en_stock"),
+                "base": val.get("precio_proveedor")
+            }
+    return condiciones
 
 
 
 def menu():
     while True: 
+        os.system("clear")
         print("""
 
                                 *****************************
                                     Reportes de Productos
                                 *****************************
     0. Regresar al menú principal     
-    1. Obtener productos de gama Ornamentales con más de 100 unidades en Stock
-    2. Añadir producto personalizado a lista de productos
+    1. Obtener todos los productos de una categoría ordenando sus precios de venta, también que su cantidad de inventario sea superior (ejem: Ornamentales, 100)
 
     """)
 
-        opcion = int(input("Seleccione una de las opciones "))
-        if opcion == 1:
-            print(tabulate(getAllStockPriceGama(), headers = "keys", tablefmt= "rounded_grid"))
-        elif(opcion == 2):
-            producto = {
-                "codigo_producto": input("Ingrese el codigo del producto: "),
-                "nombre": input("Ingrese el nombre del producto: "),
-                "gama": input("\t\n".join([f"{i}. {val}" for i, val in enumerate(gG.getAllNombre())])),
-                "dimensiones": input("Ingrese las dimensiones del producto: "),
-                "proveedor": input("Ingrese el proveedor del producto: "),
-                "descripcion": input("Ingrese la descripción del producto: "),
-                "cantidad_en_stock": int(input("Ingrese la cantidad en stock: ")),
-                "precio_venta": int(input("Ingrese el precio de venta del producto: ")),
-                "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
-            }
-            psProducto.postProducto(producto)
-            print("Producto Guardado")
-        elif opcion == 0:
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            gama = input("Ingrese la gama que deseas filtrar: ")
+            stock = int(input("Ingrese las unidades que seas mostrar: "))
+            print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="rounded_grid"))
+        elif(opcion == 0):
             break

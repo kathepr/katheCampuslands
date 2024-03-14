@@ -1,12 +1,36 @@
 from tabulate import tabulate
-
+import os
 import modules.getClients as cliente
 import modules.getOficina as oficina
 import modules.getEmpleados as empleado
 import modules.getPedido as pedido
 import modules.getPago as pago
-import modules.getProducto as producto
+import modules.getProducto as Repproducto
+import modules.postProducto as CRUDproducto
 
+
+def menuProducto():
+    while True: 
+        os.system("clear")
+        print("""
+          
+        *******************************
+                 Menu de Productos
+        *******************************
+          
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menú principal. 
+          
+          """)
+
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            Repproducto.menu()
+        if(opcion == 2):
+            CRUDproducto.menu()
+        elif(opcion == 0):
+            break
 
 
 if __name__ == "__main__":
@@ -39,7 +63,7 @@ if __name__ == "__main__":
         elif opcion == 5:
             pago.menu()
         elif opcion == 6:
-            producto.menu()
+            menuProducto()
         elif opcion == 0:
             break
 

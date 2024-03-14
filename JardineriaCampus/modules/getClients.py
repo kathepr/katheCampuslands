@@ -251,7 +251,7 @@ def menu():
         10.Obtener un listado de los nombres de todos los clientes españoles  
         11.Obtener un listado con clientes de Madrid y cuyo representante de ventas tenga el código 11 o 30.
         12.Obtener un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas
-        13.Obtener un listado con los clientes que han realizado pagos, junto con el nombre de sus representantes de ventas.
+        
           
 
 

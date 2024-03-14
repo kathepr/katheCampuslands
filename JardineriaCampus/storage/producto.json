@@ -2831,17 +2831,5 @@
         "precio_venta": "14",
         "precio_proveedor": "11",
         "id": 277
-    },
-    {
-        "codigo_producto": "987",
-        "nombre": "Rosa",
-        "gama": "Gama Katherina",
-        "dimensiones": "1",
-        "proveedor": "Katheryn",
-        "descripcion": "Una rosa morada",
-        "cantidad_en_stock": 2,
-        "precio_venta": 12.0,
-        "precio_proveedor": 12.0,
-        "id": 278
     }
 ]
