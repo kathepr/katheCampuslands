@@ -214,11 +214,11 @@ def getAllClientsRepresentante():
     representanteCodigo = []
     for cliente in cli.clientes:
          for empleados in em.empleados:
-            if empleados.get("puesto") == "Representante Ventas" and (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
+            if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
                 representanteCodigo.append({
                 "Nombre del Cliente": cliente.get("nombre_cliente"),
-                # "Código del Asesor": cliente.get("codigo_empleado_rep_ventas"),
-                # "Codigo del empleado": empleados.get("codigo_empleado"),
+                #"Código del Asesor": cliente.get("codigo_empleado_rep_ventas"),
+                #"Codigo del empleado": empleados.get("codigo_empleado"),
                 "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
               })
               
@@ -230,23 +230,26 @@ def getAllClientsRepresentante():
 #nombre de sus representantes de ventas. 
 
 def getAllClientePagoRepresentante():
-     clientePagoRepresentante = []
-     for cliente in cli.clientes:
-          for payment in pay.pago: 
-               for empleados in em.empleados:
-                    if (cliente.get("codigo_cliente") == payment.get("codigo_cliente")) and (empleados.get("puesto") == "Representante Ventas") and (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
-                         clientePagoRepresentante.append({
-                         
-                         "Nombre del Cliente": cliente.get("nombre_cliente"),
-                         "Codigo del Cliente": cliente.get("codigo_cliente"),
-                         "Codigo del CLiente": payment.get("codigo_cliente"),
-                         # "Código del Asesor": cliente.get("codigo_empleado_rep_ventas"),
-                         # "Codigo del empleado": empleados.get("codigo_empleado"),
-                         "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
-                         
-                    })
+    clientePagoRepresentante = []
+    clientePago = set()
+    for payment in pay.pago:
+        clientePago.add(payment.get("codigo_cliente"))
+    for val in clientePago:
+        for cliente in cli.clientes:
+            for empleados in em.empleados:
+                if cliente.get("codigo_cliente") == val:
+                    if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
+                        clientePagoRepresentante.append({
+                           "Codigo del cliente que pagó": val,
+                           "Nombre del Cliente": cliente.get("nombre_cliente"),
+                           "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
+                        })           
+    return clientePagoRepresentante
      
 
+    # for empleados in em.empleados:
+
+    # and (empleados.get("puesto") == "Representante Ventas") and (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
 
 
 
