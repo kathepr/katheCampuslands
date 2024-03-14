@@ -40,8 +40,8 @@ def getAllStockPriceGama(gama, stock):
 
 
 def menu():
+    os.system("clear")
     while True: 
-        os.system("clear")
         print("""
 
                                 *****************************
