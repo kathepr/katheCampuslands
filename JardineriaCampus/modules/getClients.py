@@ -2,6 +2,7 @@ from tabulate import tabulate
 import storage.cliente as cli #cli = abreviación de cliente 
 import storage.empleado as em
 import storage.pago as pay
+import storage.pedido as ped
 
 
 
@@ -225,7 +226,7 @@ def getAllClientsRepresentante():
     return representanteCodigo
          
 
-#FUNCIÓN 13:  CORREGIRLO OJO!!
+#FUNCIÓN 13:
 #Muestra el nombre de los clientes que hayan realizado pagos junto con el
 #nombre de sus representantes de ventas. 
 
@@ -247,9 +248,21 @@ def getAllClientePagoRepresentante():
     return clientePagoRepresentante
      
 
-    # for empleados in em.empleados:
-
-    # and (empleados.get("puesto") == "Representante Ventas") and (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
+#FUNCIÓN 14: 
+def getAllClientesSinPago():
+    clientesSinPagoRepresentante = []
+    clientePago = set()
+    clientePago.add(payment.get("codigo_cliente")for payment in pay.pago)
+    for cliente in cli.clientes:
+        if cliente.get("codigo_cliente") not in clientePago:
+            for empleados in em.empleados:
+                if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
+                        clientesSinPagoRepresentante.append({
+                           "Nombre del Cliente que NO realizó pagos": cliente.get("nombre_cliente"),
+                           "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
+                        })
+                                   
+    return clientesSinPagoRepresentante
 
 
 
@@ -280,6 +293,7 @@ def menu():
         11.Obtener un listado con clientes de Madrid y cuyo representante de ventas tenga el código 11 o 30.
         12.Obtener un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas
         13.Obtener un listado con el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas
+        14.Obtener un listado con el nombre de los clientes que NO hayan realizado pagos junto con el nombre de sus representantes de ventas
           
 
 
@@ -322,6 +336,8 @@ def menu():
             print(tabulate(getAllClientsRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion ==13:
             print(tabulate(getAllClientePagoRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
+    elif opcion == 14:
+            print(tabulate(getAllClientesSinPago(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 0:
             break
     
