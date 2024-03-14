@@ -219,12 +219,37 @@ def getAllClientsRepresentante():
                 "Nombre del Cliente": cliente.get("nombre_cliente"),
                 # "Código del Asesor": cliente.get("codigo_empleado_rep_ventas"),
                 # "Codigo del empleado": empleados.get("codigo_empleado"),
-                # "Nombre del Asesor": f"{empleados.get('nombre')} {empleados.get('apellido1')}",
                 "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
               })
               
     return representanteCodigo
          
+
+#FUNCIÓN 13:  CORREGIRLO OJO!!
+#Muestra el nombre de los clientes que hayan realizado pagos junto con el
+#nombre de sus representantes de ventas. 
+
+def getAllClientePagoRepresentante():
+     clientePagoRepresentante = []
+     for cliente in cli.clientes:
+          for payment in pay.pago: 
+               for empleados in em.empleados:
+                    if (cliente.get("codigo_cliente") == payment.get("codigo_cliente")) and (empleados.get("puesto") == "Representante Ventas") and (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
+                         clientePagoRepresentante.append({
+                         
+                         "Nombre del Cliente": cliente.get("nombre_cliente"),
+                         "Codigo del Cliente": cliente.get("codigo_cliente"),
+                         "Codigo del CLiente": payment.get("codigo_cliente"),
+                         # "Código del Asesor": cliente.get("codigo_empleado_rep_ventas"),
+                         # "Codigo del empleado": empleados.get("codigo_empleado"),
+                         "Nombre del Representante de Ventas": f"{empleados.get('nombre')} {empleados.get('apellido1')}"
+                         
+                    })
+     
+
+
+
+
 
 
 
@@ -251,7 +276,7 @@ def menu():
         10.Obtener un listado de los nombres de todos los clientes españoles  
         11.Obtener un listado con clientes de Madrid y cuyo representante de ventas tenga el código 11 o 30.
         12.Obtener un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas
-        
+        13.Obtener un listado con el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas
           
 
 
@@ -292,6 +317,8 @@ def menu():
             print(tabulate(getAllMadrid(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion ==12:
             print(tabulate(getAllClientsRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
+    elif opcion ==13:
+            print(tabulate(getAllClientePagoRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
     elif opcion == 0:
             break
     
