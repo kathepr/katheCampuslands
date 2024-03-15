@@ -2,8 +2,6 @@ from tabulate import tabulate
 import storage.cliente as cli #cli = abreviación de cliente 
 import storage.empleado as em
 import storage.pago as pay
-import storage.pedido as ped
-
 
 
 #Importar el archivo cliente que está en la carpeta storage
