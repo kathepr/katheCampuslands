@@ -3,6 +3,7 @@ import json
 import requests
 from tabulate import tabulate
 import modules.getGamas as gG
+import modules.getProducto as gP
 
 
 def postProducto(producto):
