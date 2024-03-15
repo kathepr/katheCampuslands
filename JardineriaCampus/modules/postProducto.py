@@ -7,7 +7,10 @@ import modules.getProducto as gP
 
 
 def postProducto(producto):
-    #json-server storage/producto.json -b 5009
+    #json-server storage/producto.json -b 5009: en el computador del campus
+    #En mi computador se saca la terminal sin colocar -b
+    #json-server storage/producto.json 5009
+    #El puerto en mi computador es: http://127.0.0.1:5009
 
     producto = {
         "codigo_producto": input("Ingrese el codigo del producto: "),
