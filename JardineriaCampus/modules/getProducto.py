@@ -12,7 +12,9 @@ def getAllData():
     #En mi computador se saca la terminal sin colocar -b
     #json-server storage/producto.json 5009
     #El puerto en mi computador es: http://127.0.0.1:5009
-    peticion = requests.get("http://172.16.100.114:5009")
+    
+    peticion = requests.get("http://127.0.0.1:5009") #Esta es el puerto de mi computador
+    #peticion = requests.get("http://172.16.100.114:5009") #Campuslands
     data = peticion.json()
     return(data)
 
