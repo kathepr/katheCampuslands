@@ -41,7 +41,7 @@ def postProducto():
         "precio_venta": int(input("Ingrese el precio de ventas: ")),
         "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
     }
-    peticion = requests.post("http://192.168.68.115:5009", data = json.dumps(producto)) #Este es el puerto de mi computador
+    peticion = requests.post("http://[::1]:5009", data = json.dumps(producto)) #Este es el puerto de mi computador
     #peticion = requests.post("http://172.16.100.114:5009", data = json.dumps(producto)) #Campuslands
     res = peticion.json()
     res ["Mensaje"] = "Producto Guardado"

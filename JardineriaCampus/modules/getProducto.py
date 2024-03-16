@@ -8,9 +8,9 @@ import os
 #Listado debe estar ordenado pro precio de venta
 #Mostrar en primer lugar los de mayor precio.
 def getAllData():
-    #json-server storage/producto.json -b 5010
+    #json-server storage/producto.json -b 5009
     
-    peticion = requests.get("http://192.168.68.114:5010") #Esta es el puerto de mi computador
+    peticion = requests.get("http://[::1]:5009") #Esta es el puerto de mi computador
     #peticion = requests.get("http://172.16.100.114:5010") #Campuslands
     data = peticion.json()
     return(data)
