@@ -2831,5 +2831,17 @@
         "precio_venta": "14",
         "precio_proveedor": "11",
         "id": 277
+    },
+    {
+        "codigo_producto": "KATH 101",
+        "nombre": "Tulipanes lilas y celestes",
+        "gama": "Herramientas",
+        "dimensiones": "1x1",
+        "proveedor": "Katheryn's Tulips",
+        "descripcion": "Tulipanes de color pastel",
+        "cantidad_en_stock": 20,
+        "precio_venta": 40,
+        "precio_proveedor": 40,
+        "id": 278
     }
 ]
