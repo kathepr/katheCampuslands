@@ -7,7 +7,7 @@ import requests
 #print(obtener.json())
 
 
-#CON ESTO GUARDAMOS DATOS NUEVOS EN LA BASE DE DATOS:
+# #CON ESTO GUARDAMOS DATOS NUEVOS EN LA BASE DE DATOS:
 empleadoNuevo = {
     "codigo": 888,
     "nombre": "Monica",
@@ -15,6 +15,7 @@ empleadoNuevo = {
 }
 obtener = requests.post("http://172.16.100.114:5507", data=json.dumps(empleadoNuevo))
 print(obtener)
+#Se utiliza para convertir (serializar) un objeto de Python en una cadena JSON
 
 
 
@@ -28,6 +29,7 @@ print(obtener)
 # plantilla = '[{"nombre": "Miguel"}, {"nombre": "Jhon"}, ["Hola mundo"]]'
 # platilla = json.loads(plantilla)  # Decodificar 
 # print(platilla[1].get("nombre"))
+#Se utiliza para cargar (parsear) una cadena JSON y convertirla en un objeto de Python
 
 
 
