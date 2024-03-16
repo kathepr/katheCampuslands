@@ -29,11 +29,7 @@ def obtener_gama_seleccionada():
             print("La entrada no es un número válido.")
 
 def postProducto():
-    #json-server storage/producto.json -b 5009: en el computador del campus
-    #En mi computador se saca la terminal sin colocar -b
-    #json-server storage/producto.json 5009
-    #El puerto en mi computador es: http://127.0.0.1:5009
-
+    #json-server storage/producto.json -b 5009
     producto = {
         "codigo_producto": input("Ingrese el codigo del producto: "),
         "nombre": input("Ingrese el nombre del producto: "),
@@ -45,7 +41,7 @@ def postProducto():
         "precio_venta": int(input("Ingrese el precio de ventas: ")),
         "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
     }
-    peticion = requests.post("http://127.0.0.1:5009", data = json.dumps(producto)) #Este es el puerto de mi computador
+    peticion = requests.post("http://192.168.68.115:5009", data = json.dumps(producto)) #Este es el puerto de mi computador
     #peticion = requests.post("http://172.16.100.114:5009", data = json.dumps(producto)) #Campuslands
     res = peticion.json()
     res ["Mensaje"] = "Producto Guardado"
