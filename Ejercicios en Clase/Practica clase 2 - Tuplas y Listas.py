@@ -16,3 +16,4 @@ print (" ")     # 0    1    2    3    4    5    6    7
 letras = tuple (("a", "e", "i", "o", "g", "l", "i", "u")) #.index = Encuentra la primera coincidencia y apartir de ahí cuenta para encontrar la segunda coincidencia.
 posicion = letras.index("i")                              # El valor final, tiene en cuenta todos los datos y va a ofrecer la posición de la última coincidencia. 
 print ("La posición de 'i' es: ", posicion)
+#Comentarios. 
