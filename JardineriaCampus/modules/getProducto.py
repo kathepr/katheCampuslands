@@ -8,14 +8,17 @@ import os
 #Listado debe estar ordenado pro precio de venta
 #Mostrar en primer lugar los de mayor precio.
 def getAllData():
-    #json-server storage/producto.json -b 5009
+    #json-server storage/producto.json -b 5010
     
-    peticion = requests.get("http://[::1]:5009") #Esta es el puerto de mi computador
-    #peticion = requests.get("http://172.16.100.114:5010") #Campuslands
+    #peticion = requests.get("http://[::1]:5010") #Esta es el puerto de mi computador
+    peticion = requests.get("http://172.16.100.114:5010/productos") #Campuslands
     data = peticion.json()
-    return(data)
+    return data
 
 
+def getProductoCodigo(codigo):
+    peticion = requests.get(f"http://172.16.100.114:5010/productos/{codigo}")
+    return [peticion.json()] if peticion.ok else []
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []
