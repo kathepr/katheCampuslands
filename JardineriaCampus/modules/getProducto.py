@@ -14,17 +14,19 @@ def getAllProducto():
     return data
 
 
-def getProductoCodigo(codigo):
-    peticion = requests.get(f"http://154.38.171.54:5008/productos{codigo}")
-    data = json.dumps(peticion)
-    #return [peticion.json()] if peticion.ok else []
+def getProductoCodigo(id):
+    peticion = requests.get(f"http://154.38.171.54:5008/productos/{id}")
+    data = json.loads(peticion.content)
     return data
+    
+
+
+
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []
     for val in getAllProducto():
-        if val.get("gama") == gama and val.get("cantidad_en_stock") is not None:
-            if val.get("cantidad_en_stock") >= stock:
+        if val.get("gama") == gama and val.get("cantidadEnStock") >= stock:
                 condiciones.append(val)
     def price(val):
         return val.get("precio_venta")    
@@ -38,7 +40,7 @@ def getAllStockPriceGama(gama, stock):
                 "dimensiones": val.get("dimensiones"),
                 "proveedor": val.get("proveedor"),
                 "descripcion": f'{val.get("descripcion")[:5]}...' if condiciones[i].get("descripcion") else None,
-                "stock": val.get("cantidad_en_stock"),
+                "stock": val.get("cantidadEnStock"),
                 "base": val.get("precio_proveedor")
             }
     return condiciones
