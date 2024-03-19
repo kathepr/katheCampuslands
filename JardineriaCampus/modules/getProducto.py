@@ -9,12 +9,12 @@ import os
 # Listado debe estar ordenado pro precio de venta
 # Mostrar en primer lugar los de mayor precio.
 def getAllProducto():
-    peticion = requests.get("http://154.38.171.54:5008/producto")
+    peticion = requests.get("http://154.38.171.54:5008/productos")
     data = json.dumps(peticion.json(), indent = 4)
 
 
 def getProductoCodigo(codigo):
-    peticion = requests.get(f"http://154.38.171.54:5008/producto{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5008/productos{codigo}")
     return [peticion.json()] if peticion.ok else []
 
 def getAllStockPriceGama(gama, stock):
