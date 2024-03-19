@@ -1,28 +1,25 @@
 from tabulate import tabulate
 import requests
+import json
 import os
 
 #FUNCION 1:
-#Devuelve listado con todos los productos que pertenecen a gama Ornamentales
-#Que tienen más de 100 unidades en stock
-#Listado debe estar ordenado pro precio de venta
-#Mostrar en primer lugar los de mayor precio.
-def getAllData():
-    #json-server storage/producto.json -b 5010
-    
-    #peticion = requests.get("http://[::1]:5010") #Esta es el puerto de mi computador
-    peticion = requests.get("http://172.16.100.114:5010/productos") #Campuslands
-    data = peticion.json()
-    return data
+# Devuelve listado con todos los productos que pertenecen a gama Ornamentales
+# Que tienen más de 100 unidades en stock
+# Listado debe estar ordenado pro precio de venta
+# Mostrar en primer lugar los de mayor precio.
+def getAllProducto():
+    peticion = requests.get("http://154.38.171.54:5008/producto")
+    data = json.dumps(peticion.json(), indent = 4)
 
 
 def getProductoCodigo(codigo):
-    peticion = requests.get(f"http://172.16.100.114:5010/productos/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5008/producto{codigo}")
     return [peticion.json()] if peticion.ok else []
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []
-    for val in getAllData():
+    for val in getAllProducto():
         if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
             condiciones.append(val)
     def price(val):

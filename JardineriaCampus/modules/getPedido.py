@@ -3,11 +3,9 @@ from datetime import datetime
 import requests
 import json
 
-import storage.pedido as ped
 
 
-def getAll():
-    
+def getAllPedido():
     peticion = requests.get("http://154.38.171.54:5007/pedido")
     data = json.dumps(peticion.json(), indent = 4)
 
@@ -16,7 +14,7 @@ def getAll():
 def getEstadoPedido ():
     estadoPedido = []
     estados = set()
-    for val in ped.pedido: 
+    for val in getAllPedido(): 
         estados.add(val.get("estado"))
     for val in estados:
         estadoPedido.append({
@@ -30,7 +28,7 @@ def getEstadoPedido ():
 def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregados = []
 
-    for val in ped.pedido:
+    for val in getAllPedido():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
                 
@@ -57,7 +55,7 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
 def getAllPedidoEntregadoDosDiasAntes():
     pedidoEntregadoAntes = []
 
-    for val in ped.pedido:
+    for val in getAllPedido():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
 
@@ -85,7 +83,7 @@ def getAllPedidoEntregadoDosDiasAntes():
 def getAllPedidosRechazados():
     pedidoRechazado = []
 
-    for val in ped.pedido:
+    for val in getAllPedido():
         if val.get("estado") == "Rechazado" and val.get("fecha_entrega") is not None:
             if val.get("fecha_entrega")[:4] == "2009":
                 pedidoRechazado.append({
@@ -104,7 +102,7 @@ def getAllPedidosRechazados():
 def getAllPedidosEnero():
     pedidoEnero = []
 
-    for val in ped.pedido:
+    for val in getAllPedido():
         if val.get("estado") == "Entregado":
             if val.get("fecha_entrega") is not None and val.get("fecha_entrega")[5:7] == "01":
                 pedidoEnero.append({

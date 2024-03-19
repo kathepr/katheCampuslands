@@ -1,11 +1,13 @@
 from tabulate import tabulate
 import requests
 import json
+import modules.getPago as pago
+import modules.getEmpleados as empleado
 
 def getAll():
-    
     peticion = requests.get("http://154.38.171.54:5001/cliente")
     data = json.dumps(peticion.json(), indent = 4)
+    return data
 #Importar el archivo cliente que está en la carpeta storage
 #as ayuda a ponerle un alias.
 
@@ -18,11 +20,10 @@ def getAll():
 def getAllClientName():
     clienteName = []
     for val in getAll():
-        codigoName = dict({
+        clienteName.append({
             "Código": val.get('codigo_cliente'),
             "Nombre": val.get('nombre_cliente')
         })
-        clienteName.append(codigoName)
     return clienteName
 
 #FUNCIÓN 2
@@ -214,7 +215,7 @@ def getAllMadrid():
 def getAllClientsRepresentante():
     representanteCodigo = []
     for cliente in getAll():
-         for empleados in em.empleados:
+         for empleados in empleado.getAllEmpleado():
             if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
                 representanteCodigo.append({
                 "Nombre del Cliente": cliente.get("nombre_cliente"),
@@ -233,11 +234,11 @@ def getAllClientsRepresentante():
 def getAllClientePagoRepresentante():
     clientePagoRepresentante = []
     clientePago = set()
-    for payment in pay.pago:
+    for payment in pago.getAllPago():
         clientePago.add(payment.get("codigo_cliente"))
     for val in clientePago:
         for cliente in getAll():
-            for empleados in em.empleados:
+            for empleados in empleado.getAllEmpleado():
                 if cliente.get("codigo_cliente") == val:
                     if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
                         clientePagoRepresentante.append({
@@ -252,10 +253,10 @@ def getAllClientePagoRepresentante():
 def getAllClientesSinPago():
     clientesSinPagoRepresentante = []
     clientePago = set()
-    clientePago.add(payment.get("codigo_cliente")for payment in pay.pago)
+    clientePago.add(payment.get("codigo_cliente")for payment in pago.getAllPago())
     for cliente in getAll():
         if cliente.get("codigo_cliente") not in clientePago:
-            for empleados in em.empleados:
+            for empleados in empleado.getAllEmpleado():
                 if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
                         clientesSinPagoRepresentante.append({
                            "Nombre del Cliente que NO realizó pagos": cliente.get("nombre_cliente"),

@@ -1,14 +1,18 @@
 from tabulate import tabulate
-
-import storage.oficina as of
+import json
+import requests
 
 #Devuelve un listado con codigo de oficina y la ciudad donde hay oficinas
+
+def getAllOficina():
+    peticion = requests.get("http://154.38.171.54:5006/pago")
+    data = json.dumps(peticion.json(), indent = 4)
 
 
 #FUNCION 1:
 def getAllCodigoCiudad():
     codigoCiudad = []
-    for val in of.oficina: #El of, corresponde al alias del modulo storage oficina
+    for val in getAllOficina(): #El of, corresponde al alias del modulo storage oficina
         codigoCiudad.append({
             "Código de la Oficina": val.get("codigo_oficina"),
             "Ciudad": val.get ("ciudad")
@@ -21,7 +25,7 @@ def getAllCodigoCiudad():
 #FUNCION 2:
 def getAllCiudadTelefono (pais):
     ciudadTelefono = []
-    for val in of.oficina:
+    for val in getAllOficina():
         if(val.get("pais")== pais):
             ciudadTelefono.append({
             "Ciudad": val.get("ciudad"),

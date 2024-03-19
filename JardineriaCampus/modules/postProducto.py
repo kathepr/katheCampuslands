@@ -42,7 +42,8 @@ def postProducto():
         "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
     }
     #peticion = requests.post("http://[::1]:5010", data = json.dumps(producto)) #Este es el puerto de mi computador
-    peticion = requests.post("http://172.16.100.114:5010", data = json.dumps(producto)) #Campuslands
+    peticion = requests.get(f"http://154.38.171.54:5008/producto={producto}")
+    data = json.dumps(peticion.json(), indent = 4)
     res = peticion.json()
     res ["Mensaje"] = "Producto Guardado"
     return [res]
@@ -51,7 +52,7 @@ def postProducto():
 def deleteProducto(id):
     data = gP.getProductoCodigo(id)
     if(len(data)): 
-        peticion = requests.delete(f"http://172.16.100.114:5010/productos/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5008/producto={id}")
         if peticion.status_code == 204:
             data.append({"Mensaje" : "Producto eliminado correctamente"})
             return {

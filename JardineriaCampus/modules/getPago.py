@@ -1,13 +1,21 @@
-import storage.pago as pay   
+ 
 from datetime import datetime
 from tabulate import tabulate
+import json
+import requests
+
+
+def getAllPago(): 
+    peticion = requests.get("http://154.38.171.54:5006/pago")
+    data = json.dumps(peticion.json(), indent = 4)
+    return data
 
 
 #FUNCIÓN 1: 
 def getAllPagoYear():
     codigoPagoYear = []
     codigoVisto = set() # set se utiliza para crear un conjunto, que es una colección desordenada y sin elementos duplicados
-    for val in pay.pago:
+    for val in getAllPago():
         year = val.get("fecha_pago")[:4] # Se selecciona los primeros 4 caracteres, que corresponden al año
         codigo = val.get("codigo_cliente")
         if year == "2008" and codigo not in codigoVisto:
@@ -23,7 +31,7 @@ def getAllPagoYear():
 #FUNCIÓN 2: 
 def getAllPago2008():
     pago2008 = []
-    for val in pay.pago:
+    for val in getAllPago():
         formaPago = val.get("forma_pago")
         yearPago = val.get("fecha_pago")[:4]
         totalPago = val.get("total")
@@ -49,7 +57,7 @@ def getAllPago2008():
 def getAllFormasPago():
     formasPago = []
     formasPagoVistas = set() 
-    for val in pay.pago:
+    for val in getAllPago():
         formasPagoVistas.add(val.get("forma_pago"))
     for val in formasPagoVistas:
         formasPago.append({     
