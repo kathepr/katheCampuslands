@@ -6,8 +6,9 @@ import json
 
 
 def getAllPedido():
-    peticion = requests.get("http://154.38.171.54:5007/pedido")
-    data = json.dumps(peticion.json(), indent = 4)
+    peticion = requests.get("http://154.38.171.54:5007/pedidos")
+    data = json.loads(peticion.text)
+    return data
 
 
 #FUNCION 1: 

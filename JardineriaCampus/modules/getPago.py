@@ -6,10 +6,12 @@ import requests
 
 
 def getAllPago(): 
-    peticion = requests.get("http://154.38.171.54:5006/pago")
-    data = json.dumps(peticion.json(), indent = 4)
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
+    data = json.loads(peticion.text) 
     return data
-
+#Cuando haces una solicitud HTTP utilizando requests.get(), 
+#el objeto de respuesta que se devuelve contiene varios atributos, 
+#uno de los cuales es text. Este atributo contiene el cuerpo de la respuesta HTTP como una cadena de texto Unicode.
 
 #FUNCIÓN 1: 
 def getAllPagoYear():

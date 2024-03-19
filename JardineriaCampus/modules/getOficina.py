@@ -5,8 +5,9 @@ import requests
 #Devuelve un listado con codigo de oficina y la ciudad donde hay oficinas
 
 def getAllOficina():
-    peticion = requests.get("http://154.38.171.54:5006/pago")
-    data = json.dumps(peticion.json(), indent = 4)
+    peticion = requests.get("http://154.38.171.54:5005/oficinas")
+    data = json.loads(peticion.text)
+    return data
 
 
 #FUNCION 1:

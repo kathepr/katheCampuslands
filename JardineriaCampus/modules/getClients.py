@@ -6,7 +6,8 @@ import modules.getEmpleados as empleado
 
 def getAll():
     peticion = requests.get("http://154.38.171.54:5001/cliente")
-    data = json.dumps(peticion.json(), indent = 4)
+    #data = json.dumps(peticion.json(), indent = 4)
+    data = json.loads(peticion.text)
     return data
 #Importar el archivo cliente que está en la carpeta storage
 #as ayuda a ponerle un alias.
@@ -285,7 +286,7 @@ def menu():
         2. Obtener un cliente por el código (código y nombre)
         3. Obtener toda la información de un cliente segun su limite crédito y ciudad que pertene (ejemplo: 3000.0, San Francisco)
         4. Obtener toda la información de un cliente segun su pais, region y ciudad (ejemplo: Spain, Madrid, Fuenlabrada)
-        5. Obtener toda la información del cliente por el apellido del Director (ejemplo: GolFish)
+        5. Obtener toda la información del cliente por el apellido del Director (ejemplo: GoldFish)
         6. Obtener toda la información del cliente por el número de Fax (por ejemplo: 5556901746)
         7. Obtener toda la información del cliente por el número de Telefono (por ejemplo: 5556901745)
         8. Obtener toda la información del cliente por su dirección principal (por ejemplo: Oaks Avenue nº22)

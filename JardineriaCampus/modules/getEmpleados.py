@@ -4,8 +4,9 @@ import requests
 
 
 def getAllEmpleado():
-    peticion = requests.get("http://154.38.171.54:5003/empleado")
-    data = json.dumps(peticion.json(), indent = 4)
+    peticion = requests.get("http://154.38.171.54:5003/empleados")
+    data = json.loads(peticion.text)
+    return data
 
 #FUNCIÓN 1:
 def getAllNombreApellidoEmailJefe(codigo):

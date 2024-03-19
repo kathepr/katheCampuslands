@@ -42,17 +42,17 @@ def postProducto():
         "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
     }
     #peticion = requests.post("http://[::1]:5010", data = json.dumps(producto)) #Este es el puerto de mi computador
-    peticion = requests.get(f"http://154.38.171.54:5008/producto={producto}")
-    data = json.dumps(peticion.json(), indent = 4)
-    res = peticion.json()
-    res ["Mensaje"] = "Producto Guardado"
-    return [res]
+    url = "http://154.38.171.54:5008/productos"
+    data = json.dumps(producto)
+    peticion = requests.post(url,data)
+    print("Producto Guardado")
+    return peticion
 
 
 def deleteProducto(id):
     data = gP.getProductoCodigo(id)
     if(len(data)): 
-        peticion = requests.delete(f"http://154.38.171.54:5008/producto={id}")
+        peticion = requests.delete(f"http://154.38.171.54:5008/productos={id}")
         if peticion.status_code == 204:
             data.append({"Mensaje" : "Producto eliminado correctamente"})
             return {
@@ -89,7 +89,7 @@ def menu():
             if(opcion == 1):
                 print(tabulate(postProducto(), headers="keys", tablefmt="github"))
             elif(opcion == 2):
-                idProducto = int(input("Ingrese el ID del producto que desea eliminar: "))
+                idProducto = input("Ingrese el ID del producto que desea eliminar: ")
                 print(tabulate(deleteProducto(idProducto)["body"], headers="keys", tablefmt="github"))
                 
             elif(opcion == 0):

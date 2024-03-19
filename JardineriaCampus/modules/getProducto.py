@@ -10,18 +10,22 @@ import os
 # Mostrar en primer lugar los de mayor precio.
 def getAllProducto():
     peticion = requests.get("http://154.38.171.54:5008/productos")
-    data = json.dumps(peticion.json(), indent = 4)
+    data = json.loads(peticion.text)
+    return data
 
 
 def getProductoCodigo(codigo):
     peticion = requests.get(f"http://154.38.171.54:5008/productos{codigo}")
-    return [peticion.json()] if peticion.ok else []
+    data = json.dumps(peticion)
+    #return [peticion.json()] if peticion.ok else []
+    return data
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []
     for val in getAllProducto():
-        if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
-            condiciones.append(val)
+        if val.get("gama") == gama and val.get("cantidad_en_stock") is not None:
+            if val.get("cantidad_en_stock") >= stock:
+                condiciones.append(val)
     def price(val):
         return val.get("precio_venta")    
     condiciones.sort(key=price, reverse=True)
