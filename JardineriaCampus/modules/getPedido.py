@@ -1,7 +1,15 @@
 from tabulate import tabulate
 from datetime import datetime
+import requests
+import json
 
 import storage.pedido as ped
+
+
+def getAll():
+    
+    peticion = requests.get("http://154.38.171.54:5007/pedido")
+    data = json.dumps(peticion.json(), indent = 4)
 
 
 #FUNCION 1: 

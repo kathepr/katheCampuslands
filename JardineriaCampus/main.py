@@ -37,6 +37,18 @@ def menuProducto():
 
 if __name__ == "__main__":
 
+#Filtrar los pedidos entregados 
+
+    peticion = requests.get("http://154.38.171.54:5007/pedidos?estado=Entregado&fechaEntrega_ne.null") #Colocar un ? significa que se va agregar un cambio / url del profesor
+    data = json.dumps(peticion.json(), indent = 4)
+
+
+
+
+
+    peticion = requests.get("http://154.38.171.54:5008/productos") #Colocar un ? significa que se va agregar un cambio / url del profesor
+    data = json.dumps(peticion.json(), indent = 4)
+
 
     while True: 
         print("""

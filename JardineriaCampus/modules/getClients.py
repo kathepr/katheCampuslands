@@ -1,21 +1,23 @@
 from tabulate import tabulate
-import storage.cliente as cli #cli = abreviación de cliente 
-import storage.empleado as em
-import storage.pago as pay
+import requests
+import json
 
-
+def getAll():
+    
+    peticion = requests.get("http://154.38.171.54:5001/cliente")
+    data = json.dumps(peticion.json(), indent = 4)
 #Importar el archivo cliente que está en la carpeta storage
 #as ayuda a ponerle un alias.
 
 # PARA MOSTRAR CLIENTES:
-#print(cli.clientes)
+#print(getAll())
 #Se coloca el alias del archivo y el nombre del dato que se quiere imprimir
 
 
 #FUNCIÓN 1: 
 def getAllClientName():
     clienteName = []
-    for val in cli.clientes:
+    for val in getAll():
         codigoName = dict({
             "Código": val.get('codigo_cliente'),
             "Nombre": val.get('nombre_cliente')
@@ -26,7 +28,7 @@ def getAllClientName():
 #FUNCIÓN 2
 def getOneClientCodigo(codigo):
     clienteName = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get('codigo_cliente') == codigo:
             clienteName.append({
                 "Código": val.get('codigo_cliente'),
@@ -37,7 +39,7 @@ def getOneClientCodigo(codigo):
 #FUNCIÓN 3
 def getAllClientCreditCiudad(limiteCredit, ciudad):
     clientCredit = list()
-    for val in cli.clientes:
+    for val in getAll():
         if(val.get('limite_credito') >= limiteCredit and val.get('ciudad')==ciudad):
             clientCredit.append({
                 "Código": val.get("codigo_cliente"),
@@ -56,7 +58,7 @@ def getAllClientCreditCiudad(limiteCredit, ciudad):
 #FUNCIÓN 4:
 def getAllClientPaisRegionCiudad(pais, region, ciudad):
     clientZone = []
-    for val in cli.clientes:
+    for val in getAll():
         if(
             val.get('pais') == pais and 
             (val.get('region') == region or val.get('region') == None) and
@@ -79,7 +81,7 @@ def getAllClientPaisRegionCiudad(pais, region, ciudad):
 #FUNCION 5: 
 def getAllApellido(apellido):
     clientApellido = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get ('apellido_contacto') == apellido:
             clientApellido.append({
                 "Código": val.get("codigo_cliente"),
@@ -98,7 +100,7 @@ def getAllApellido(apellido):
 #FUNCIÓN 6: 
 def getAllFax(fax):
     clientFax = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get('fax') == fax:
             clientFax.append({
                 "Código": val.get("codigo_cliente"),
@@ -118,7 +120,7 @@ def getAllFax(fax):
 #FUNCIÓN 7: 
 def getAllTelefono(telefono):
     clienteTelefono = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get('telefono') == telefono:
             clienteTelefono.append({
                 "Código": val.get("codigo_cliente"),
@@ -138,7 +140,7 @@ def getAllTelefono(telefono):
 #FUNCIÓN 8:
 def getAllDireccion(direccion):
     clientDireccion = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get('linea_direccion1') == direccion:
             clientDireccion.append({
                 "Código": val.get("codigo_cliente"),
@@ -158,7 +160,7 @@ def getAllDireccion(direccion):
 #FUNCIÓN 9:
 def getAllPostal(postal):
     clientPostal = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get('codigo_postal') == postal:
             clientPostal.append({
                 "Código": val.get("codigo_cliente"),
@@ -178,7 +180,7 @@ def getAllPostal(postal):
 #FUNCION 10:
 def getAllEspañoles():
     nombresEspañoles = []
-    for val in cli.clientes:
+    for val in getAll():
         if val.get("pais") == "Spain":
             nombresEspañoles.append({
                 "Nombre del Cliente": val.get("nombre_cliente"),
@@ -191,7 +193,7 @@ def getAllEspañoles():
 #FUNCIÓN 11:
 def getAllMadrid():
     madridRepresentanteVentas = []
-    for val in cli.clientes:
+    for val in getAll():
          if val.get("ciudad") == "Madrid" and (val.get("codigo_empleado_rep_ventas") == 11 or val.get("codigo_empleado_rep_ventas") == 30):
                madridRepresentanteVentas.append({
                 "Código": val.get("codigo_cliente"),
@@ -211,7 +213,7 @@ def getAllMadrid():
 #FUNCIÓN 12:
 def getAllClientsRepresentante():
     representanteCodigo = []
-    for cliente in cli.clientes:
+    for cliente in getAll():
          for empleados in em.empleados:
             if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
                 representanteCodigo.append({
@@ -234,7 +236,7 @@ def getAllClientePagoRepresentante():
     for payment in pay.pago:
         clientePago.add(payment.get("codigo_cliente"))
     for val in clientePago:
-        for cliente in cli.clientes:
+        for cliente in getAll():
             for empleados in em.empleados:
                 if cliente.get("codigo_cliente") == val:
                     if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
@@ -251,7 +253,7 @@ def getAllClientesSinPago():
     clientesSinPagoRepresentante = []
     clientePago = set()
     clientePago.add(payment.get("codigo_cliente")for payment in pay.pago)
-    for cliente in cli.clientes:
+    for cliente in getAll():
         if cliente.get("codigo_cliente") not in clientePago:
             for empleados in em.empleados:
                 if (cliente.get("codigo_empleado_rep_ventas") == empleados.get("codigo_empleado")):
