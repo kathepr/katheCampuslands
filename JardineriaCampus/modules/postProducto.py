@@ -111,4 +111,6 @@ def menu():
                 print(tabulate(updateProducto(id), headers="keys", tablefmt = "rounded_grid"))
             elif(opcion == 0):
                 break
+        else:
+            print("\nOpción incorrecta, vuelva a intentarlo")
         input("Presione una tecla para continuar.....")
