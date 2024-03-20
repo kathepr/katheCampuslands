@@ -61,6 +61,28 @@ def deleteProducto(id):
         #     return json.loads(peticion.content)
         
 
+def updateProducto(id):
+    productoActualizado = {
+        "codigo_producto": input("Ingrese el codigo del producto: "),
+        "nombre": input("Ingrese el nombre del producto: "),
+        "gama": obtener_gama_seleccionada(),
+        "dimensiones": input("Ingrese la dimensiones del producto: "),
+        "proveedor": input("Ingrese el proveedor del producto: "),
+        "descripcion": input("Ingrese el descripcion del producto: "),
+        "cantidad_en_stock": int(input("Ingrese el cantidad en stock: ")),
+        "precio_venta": int(input("Ingrese el precio de ventas: ")),
+        "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
+    }
+    
+    url = (f"http://154.38.171.54:5008/productos/{id}")
+    data = json.dumps(productoActualizado)
+    peticion = requests.put(url,data)
+    if peticion.status_code == 200:
+            print("\nProducto Actualizado")
+
+
+
+
 
 def menu():
     while True:
@@ -70,6 +92,7 @@ def menu():
 
         1. Guardar producto nuevo
         2. Eliminar un producto
+        3. Actualizar los datos de un producto
         0. Regresar
         
         
@@ -77,13 +100,15 @@ def menu():
         opcion = int(input("\nSelecione una de las opciones: "))
 
 
-        if opcion >=0 and opcion<=2:
+        if opcion >=0 and opcion<=3:
             if(opcion == 1):
-                print(tabulate(postProducto(), headers="keys", tablefmt="github"))
+                print(tabulate(postProducto(), headers="keys", tablefmt="rounded_grid"))
             elif(opcion == 2):
                 id = input("Ingrese el ID del producto que desea eliminar: ")
-                print(tabulate(deleteProducto(id), headers="keys", tablefmt="github"))
-                
+                print(tabulate(deleteProducto(id), headers="keys", tablefmt="rounded_grid"))
+            elif opcion == 3:
+                id = input("Ingrese el ID del producto que desea actualizar: ")
+                print(tabulate(updateProducto(id), headers="keys", tablefmt = "rounded_grid"))
             elif(opcion == 0):
                 break
         input("Presione una tecla para continuar.....")
