@@ -3,7 +3,7 @@ import requests
 import os
 import json
 import modules.getClients as gCliente
-import modules.getClients as pCliente
+import modules.postCliente as pCliente
 import modules.getOficina as gOficina
 import modules.postOficina as pOficina
 import modules.getEmpleados as gEmpleado
