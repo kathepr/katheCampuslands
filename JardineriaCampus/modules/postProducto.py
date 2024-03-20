@@ -97,20 +97,26 @@ def menu():
         
         
         """)
-        opcion = int(input("\nSelecione una de las opciones: "))
-
-
-        if opcion >=0 and opcion<=3:
-            if(opcion == 1):
-                print(tabulate(postProducto(), headers="keys", tablefmt="rounded_grid"))
-            elif(opcion == 2):
-                id = input("Ingrese el ID del producto que desea eliminar: ")
-                print(tabulate(deleteProducto(id), headers="keys", tablefmt="rounded_grid"))
-            elif opcion == 3:
-                id = input("Ingrese el ID del producto que desea actualizar: ")
-                print(tabulate(updateProducto(id), headers="keys", tablefmt = "rounded_grid"))
-            elif(opcion == 0):
-                break
-        else:
-            print("\nOpción incorrecta, vuelva a intentarlo")
-        input("Presione una tecla para continuar.....")
+        try: 
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >=0 and opcion<=3:
+                if(opcion == 1):
+                    print(tabulate(postProducto(), headers="keys", tablefmt="rounded_grid"))
+                elif(opcion == 2):
+                    id = input("Ingrese el ID del producto que desea eliminar: ")
+                    print(tabulate(deleteProducto(id), headers="keys", tablefmt="rounded_grid"))
+                elif opcion == 3:
+                    id = input("Ingrese el ID del producto que desea actualizar: ")
+                    print(tabulate(updateProducto(id), headers="keys", tablefmt = "rounded_grid"))
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+            input("Presione una tecla para continuar.....")
+                
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
