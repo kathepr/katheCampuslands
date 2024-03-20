@@ -30,14 +30,28 @@ def menuProducto():
             0. Regresar al menú principal. 
           
           """)
+        try:
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >= 0 and opcion <3:
+                if(opcion == 1):
+                    Repproducto.menu()
+                elif(opcion == 2):
+                    CRUDproducto.menu()
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+                
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
 
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            Repproducto.menu()
-        if(opcion == 2):
-            CRUDproducto.menu()
-        elif(opcion == 0):
-            break
+
+
+
 
 def menuPedido():
     while True:
@@ -52,14 +66,27 @@ def menuPedido():
             0. Regresar al menú principal. 
           
           """)
-        
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            gPedido.menu()
-        if(opcion == 2):
-            pPedido.menu()
-        elif(opcion == 0):
-            break
+        try: 
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >= 0 and opcion < 3:
+                if(opcion == 1):
+                    gPedido.menu()
+                elif(opcion == 2):
+                    pPedido.menu()
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+                
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+
+
+
 
 
 def menuPago():
@@ -75,14 +102,27 @@ def menuPago():
             0. Regresar al menú principal. 
           
           """)
-        
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            gPago.menu()
-        if(opcion == 2):
-            pPago.menu()
-        elif(opcion == 0):
-            break
+        try:
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >=0 and opcion <3:
+                if(opcion == 1):
+                    gPago.menu()
+                elif(opcion == 2):
+                    pPago.menu()
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+                
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+
+
+
 
 
 def menuOficina():
@@ -99,15 +139,28 @@ def menuOficina():
           
           """)
         
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            gOficina.menu()
-        if(opcion == 2):
-            pOficina.menu()
-        elif(opcion == 0):
-            break
+        try: 
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >=0 and opcion < 3:
+                if(opcion == 1):
+                    gOficina.menu()
+                elif(opcion == 2):
+                    pOficina.menu()
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+                
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
 
-            
+
+
+
 def menuCliente():
     while True:
         print("""
@@ -122,13 +175,28 @@ def menuCliente():
           
           """)
         
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            gCliente.menu()
-        if(opcion == 2):
-            pCliente.menu()
-        elif(opcion == 0):
-            break
+        try:
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >= 0 and opcion < 3:
+                if(opcion == 1):
+                    gCliente.menu()
+                elif(opcion == 2):
+                    pCliente.menu()
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+                
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+        
+
+
+
 
 def menuEmpleado():
     while True:
@@ -144,13 +212,25 @@ def menuEmpleado():
           
           """)
         
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            gEmpleado.menu()
-        if(opcion == 2):
-            pEmpleado.menu()
-        elif(opcion == 0):
-            break
+        try: 
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >=0 and opcion <3:
+                if(opcion == 1):
+                    gEmpleado.menu()
+                elif(opcion == 2):
+                    pEmpleado.menu()
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+        
 
 
 
@@ -174,22 +254,37 @@ if __name__ == "__main__":
             0. Salir
           
           """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if opcion == 1:
-            menuCliente()
-        elif opcion == 2:
-            menuOficina()
-        elif opcion == 3:
-            menuEmpleado()
-        elif opcion == 4:
-            menuPedido()
-        elif opcion == 5:
-            menuPago()
-        elif opcion == 6:
-            menuProducto()
-        elif opcion == 0:
-            break
+        
+        try: 
+            opcion = int(input("\nSeleccione una de las opciones: "))
+        
+            if opcion>=0 and opcion<7:
+                if opcion == 1:
+                    menuCliente()
+                elif opcion == 2:
+                    menuOficina()
+                elif opcion == 3:
+                    menuEmpleado()
+                elif opcion == 4:
+                    menuPedido()
+                elif opcion == 5:
+                    menuPago()
+                elif opcion == 6:
+                    menuProducto()
+                elif opcion == 0:
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
 
+
+
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+            
 
     
 
