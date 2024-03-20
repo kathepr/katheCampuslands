@@ -10,6 +10,11 @@ def getAllPedido():
     data = json.loads(peticion.text)
     return data
 
+def getPedidoCodigo(id):
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{id}")
+    data = json.loads(peticion.text)
+    return data
+
 
 #FUNCION 1: 
 def getEstadoPedido ():
@@ -30,11 +35,11 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregados = []
 
     for val in getAllPedido():
-        if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
-            val["fecha_entrega"] = val.get("fecha_esperada")
+        if val.get("estado") == "Entregado" and val.get("fechaEntrega") is None:
+            val["fechaEntrega"] = val.get("fecha_esperada")
                 
         if val.get("estado") == "Entregado":
-            date_1 = "/".join(val.get("fecha_entrega").split("-")[::-1])
+            date_1 = "/".join(val.get("fechaEntrega").split("-")[::-1])
             date_2 = "/".join(val.get("fecha_esperada").split("-")[::-1])
 
             start = datetime.strptime(date_1, "%d/%m/%Y")
@@ -47,7 +52,7 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
                     "Código del pedido": val.get("codigo_pedido"),
                     "Código del cliente": val.get("codigo_cliente"),
                     "Fecha esperada": val.get("fecha_esperada"),
-                    "Fecha de entrega": val.get("fecha_entrega")
+                    "Fecha de entrega": val.get("fechaEntrega")
                 })
     return pedidosEntregados
 
@@ -57,12 +62,12 @@ def getAllPedidoEntregadoDosDiasAntes():
     pedidoEntregadoAntes = []
 
     for val in getAllPedido():
-        if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
-            val["fecha_entrega"] = val.get("fecha_esperada")
+        if val.get("estado") == "Entregado" and val.get("fechaEntrega") is None:
+            val["fechaEntrega"] = val.get("fecha_esperada")
 
         if val.get("estado") == "Entregado":
             date_1 = "/".join(val.get("fecha_esperada").split("-")[::-1])
-            date_2 = "/".join(val.get ("fecha_entrega").split ("-")[::-1])
+            date_2 = "/".join(val.get ("fechaEntrega").split ("-")[::-1])
 
             start = datetime.strptime(date_2, "%d/%m/%Y")
             end = datetime.strptime(date_1, "%d/%m/%Y")
@@ -75,7 +80,7 @@ def getAllPedidoEntregadoDosDiasAntes():
                     "Código del pedido": val.get("codigo_pedido"),
                     "Código del cliente": val .get("codigo_cliente"),
                     "Fecha esperada": val.get("fecha_esperada"),
-                    "Fecha de entrega": val.get("fecha_entrega")
+                    "Fecha de entrega": val.get("fechaEntrega")
                     })
     return pedidoEntregadoAntes
 
@@ -85,13 +90,13 @@ def getAllPedidosRechazados():
     pedidoRechazado = []
 
     for val in getAllPedido():
-        if val.get("estado") == "Rechazado" and val.get("fecha_entrega") is not None:
-            if val.get("fecha_entrega")[:4] == "2009":
+        if val.get("estado") == "Rechazado" and val.get("fechaEntrega") is not None:
+            if val.get("fechaEntrega")[:4] == "2009":
                 pedidoRechazado.append({
                     "Código del pedido": val.get("codigo_pedido"),
                     "Fecha del pedido": val.get("fecha_pedido"),
                     "Fecha esperada": val.get("fecha_esperada"),
-                    "Fecha de entrega": val.get("fecha_entrega"),
+                    "Fecha de entrega": val.get("fechaEntrega"),
                     "Estado": val.get("estado"),
                     "Comentarios": val.get("comentario"),
                     "Código del cliente": val .get("codigo_cliente")
@@ -105,12 +110,12 @@ def getAllPedidosEnero():
 
     for val in getAllPedido():
         if val.get("estado") == "Entregado":
-            if val.get("fecha_entrega") is not None and val.get("fecha_entrega")[5:7] == "01":
+            if val.get("fechaEntrega") is not None and val.get("fechaEntrega")[5:7] == "01":
                 pedidoEnero.append({
                     "Código del pedido": val.get("codigo_pedido"),
                     "Fecha del pedido": val.get("fecha_pedido"),
                     "Fecha esperada": val.get("fecha_esperada"),
-                    "Fecha de entrega": val.get("fecha_entrega"),
+                    "Fecha de entrega": val.get("fechaEntrega"),
                     "Estado": val.get("estado"),
                     "Comentarios": val.get("comentario"),
                     "Código del cliente": val.get("codigo_cliente")

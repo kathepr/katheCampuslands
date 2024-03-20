@@ -2,13 +2,18 @@ from tabulate import tabulate
 import requests
 import os
 import json
-import modules.getClients as cliente
-import modules.getOficina as oficina
-import modules.getEmpleados as empleado
-import modules.getPedido as pedido
-import modules.getPago as pago
+import modules.getClients as gCliente
+import modules.getClients as pCliente
+import modules.getOficina as gOficina
+import modules.postOficina as pOficina
+import modules.getEmpleados as gEmpleado
+import modules.postEmpleados as pEmpleado
+import modules.getPago as gPago
+import modules.postPago as pPago
 import modules.getProducto as Repproducto
 import modules.postProducto as CRUDproducto
+import modules.getPedido as gPedido
+import modules.postPedido as pPedido
 
 
 def menuProducto():
@@ -34,6 +39,121 @@ def menuProducto():
         elif(opcion == 0):
             break
 
+def menuPedido():
+    while True:
+        print("""
+          
+        *******************************
+                 Menu de Pedidos
+        *******************************
+          
+            1. Reportes de los pedidos
+            2. Guardar, Actualizar y Eliminar pedidos
+            0. Regresar al menú principal. 
+          
+          """)
+        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            gPedido.menu()
+        if(opcion == 2):
+            pPedido.menu()
+        elif(opcion == 0):
+            break
+
+
+def menuPago():
+    while True:
+        print("""
+          
+        *******************************
+                 Menu de Pagos
+        *******************************
+          
+            1. Reportes de los pagos
+            2. Guardar, Actualizar y Eliminar pagos
+            0. Regresar al menú principal. 
+          
+          """)
+        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            gPago.menu()
+        if(opcion == 2):
+            pPago.menu()
+        elif(opcion == 0):
+            break
+
+
+def menuOficina():
+    while True:
+        print("""
+          
+        *******************************
+                 Menu de Oficina
+        *******************************
+          
+            1. Reportes de las oficinas
+            2. Guardar, Actualizar y Eliminar oficinas
+            0. Regresar al menú principal. 
+          
+          """)
+        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            gOficina.menu()
+        if(opcion == 2):
+            pOficina.menu()
+        elif(opcion == 0):
+            break
+
+            
+def menuCliente():
+    while True:
+        print("""
+          
+        *******************************
+                 Menu de Clientes
+        *******************************
+          
+            1. Reportes de clientes
+            2. Guardar, Actualizar y Eliminar clientes
+            0. Regresar al menú principal. 
+          
+          """)
+        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            gCliente.menu()
+        if(opcion == 2):
+            pCliente.menu()
+        elif(opcion == 0):
+            break
+
+def menuEmpleado():
+    while True:
+        print("""
+          
+        *******************************
+                 Menu de Empleados
+        *******************************
+          
+            1. Reportes de empleados
+            2. Guardar, Actualizar y Eliminar empleados
+            0. Regresar al menú principal.
+          
+          """)
+        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            gEmpleado.menu()
+        if(opcion == 2):
+            pEmpleado.menu()
+        elif(opcion == 0):
+            break
+
+
+
 
 if __name__ == "__main__":
 
@@ -56,15 +176,15 @@ if __name__ == "__main__":
           """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if opcion == 1:
-            cliente.menu()
+            menuCliente()
         elif opcion == 2:
-            oficina.menu()
+            menuOficina()
         elif opcion == 3:
-            empleado.menu()
+            menuEmpleado()
         elif opcion == 4:
-            pedido.menu()
+            menuPedido()
         elif opcion == 5:
-            pago.menu()
+            menuPago()
         elif opcion == 6:
             menuProducto()
         elif opcion == 0:

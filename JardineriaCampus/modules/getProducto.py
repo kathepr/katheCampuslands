@@ -6,7 +6,7 @@ import os
 #FUNCION 1:
 # Devuelve listado con todos los productos que pertenecen a gama Ornamentales
 # Que tienen más de 100 unidades en stock
-# Listado debe estar ordenado pro precio de venta
+# Listado debe estar ordenado pro precio de venta0
 # Mostrar en primer lugar los de mayor precio.
 def getAllProducto():
     peticion = requests.get("http://154.38.171.54:5008/productos")
@@ -19,7 +19,6 @@ def getProductoCodigo(id):
     data = json.loads(peticion.text)
     return data
     
-
 
 
 

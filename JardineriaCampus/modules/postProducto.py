@@ -50,12 +50,12 @@ def postProducto():
 
 
 def deleteProducto(id):
-    productoEliminado = []
-    data = gP.getProductoCodigo(id)
-    if(len(data)): 
+    # productoEliminado = []
+    # data = gP.getProductoCodigo(id)
+    # if(len(data)): #Se está utilizando len(data) para verificar si la longitud del objeto data es mayor que cero. Si la longitud es mayor que cero, el código dentro del bloque if se ejecutará.
         peticion = requests.delete(f"http://154.38.171.54:5008/productos/{id}")
         if peticion.status_code == 200:
-            print("\nProducto ELiminado")
+            print("\nProducto Eliminado")
                 
         #     data.append({"Mensaje" : "Producto eliminado correctamente"})
         #     return json.loads(peticion.content)
