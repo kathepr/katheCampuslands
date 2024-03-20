@@ -16,7 +16,7 @@ def getAllProducto():
 
 def getProductoCodigo(id):
     peticion = requests.get(f"http://154.38.171.54:5008/productos/{id}")
-    data = json.loads(peticion.content)
+    data = json.loads(peticion.text)
     return data
     
 
