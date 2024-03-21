@@ -18,7 +18,6 @@ import modules.postPedido as pPedido
 
 def menuProducto():
     while True: 
-        os.system("clear")
         print("""
           
         *******************************

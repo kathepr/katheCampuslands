@@ -112,7 +112,6 @@ def menu():
                     break
             else:
                 print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
-            input("Presione una tecla para continuar.....")
                 
         except ValueError:
             print("""
