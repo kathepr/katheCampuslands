@@ -12,7 +12,7 @@ def validar_input(patron, mensaje):
     while True: 
         entrada = input(mensaje)
         if patron.match(entrada):
-            confirmacion = input(f"¿Confirma el ingreso de este dato <{entrada}>? (S/N) ").strip().lower()
+            confirmacion = input(f"¿Confirma el ingreso de este dato '{entrada}'? (S/N) ").strip().lower()
             if confirmacion == "s":
                 return entrada
         else:
@@ -45,16 +45,41 @@ def obtener_gama_seleccionada():
 
 def postProducto():
     #json-server storage/producto.json -b 5009
+
+#Expresiones regulares para cada dato:
+    
+    codigoPR = re.compile(r'^[A-Z]{2}-[0-9]{2,3}$')
+    nombrePR = re.compile(r'^[A-Za-z\s]+$')
+    gamaPR = re.compile(r'^[A-Za-z]+$')
+    dimensionesPR = re.compile (r'^[0-9]{1,3}-[0-9]{1,3}$')
+    proveedorPR = re.compile(r'^[A-Za-z\s]+$')
+    descripcionPR = re.compile(r'^[^\n]+$')
+    stockPR = re.compile(r'^\d+$')
+    precioVentaPR = re.compile(r'^\d+$')
+    precioProveedorPR=re.compile(r'^\d+$')
+
+#Obtener los datos del usuario:
+    
+    codigo_producto = validar_input(codigoPR, "Ingrese el código del producto: ")
+    nombre_producto= validar_input(nombrePR, "Ingrese el nombre del producto: ")
+    gama = validar_input(gamaPR, "Ingrese la gama del producto: ")
+    dimensiones = validar_input(dimensionesPR, "Ingrese las dimensiones del producto: ")
+    proveedor = validar_input(proveedorPR, "Ingrese el proveedor del producto: ")
+    descripcion = validar_input(descripcionPR, "Ingrese la descripción del producto: ")
+    stock = int(validar_input(stockPR, "Ingrese la cantidad en stock: "))
+    precioVenta = int(validar_input(precioVentaPR, "Ingrese el precio de ventas: "))
+    precioProveedor = int(validar_input(precioProveedorPR, "Ingrese el precio del proveedor: "))
+
     producto = {
-        "codigo_producto": input("Ingrese el codigo del producto: "),
-        "nombre": input("Ingrese el nombre del producto: "),
-        "gama": obtener_gama_seleccionada(),
-        "dimensiones": input("Ingrese la dimensiones del producto: "),
-        "proveedor": input("Ingrese el proveedor del producto: "),
-        "descripcion": input("Ingrese el descripcion del producto: "),
-        "cantidad_en_stock": int(input("Ingrese el cantidad en stock: ")),
-        "precio_venta": int(input("Ingrese el precio de ventas: ")),
-        "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
+        "codigo_producto": codigo_producto,
+        "nombre": nombre_producto,
+        "gama": gama,
+        "dimensiones": dimensiones,
+        "proveedor": proveedor,
+        "descripcion": descripcion,
+        "cantidad_en_stock": stock,
+        "precio_venta": precioVenta,
+        "precio_proveedor": precioProveedor
     }
     #peticion = requests.post("http://[::1]:5010", data = json.dumps(producto)) #Este es el puerto de mi computador
     url = "http://154.38.171.54:5008/productos"
@@ -76,17 +101,6 @@ def deleteProducto(id):
         #     return json.loads(peticion.content)
         
 
-def validar_input(patron, mensaje):
-    while True: 
-        entrada = input(mensaje)
-        if patron.match(entrada):
-            confirmacion = input(f"¿Confirma el ingreso de este dato {entrada}? (S/N)").strip().lower()
-            if confirmacion == "s":
-                return entrada
-        else:
-            print("El dato no cumple con los parametros establecidos. Vuelva a intentarlo.")
-
- 
 def updateProducto(id):
 
 #Expresiones regulares para cada dato:
