@@ -71,7 +71,7 @@ def updatePedido(id):
 
 
 #Expresiones regulares para cada dato:
-    codigoPR = re.compile(r'^\d+$')
+    codigoPR = re.compile(r'^[0-9]+$')
     fechaPedidoR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
     fechaEsperadaR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
     fechaEntregaR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
