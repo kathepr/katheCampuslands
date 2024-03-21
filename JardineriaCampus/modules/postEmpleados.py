@@ -28,6 +28,7 @@ def postEmpleado():
     codigoJefeR = re.compile(r'^[0-9]+$')
     puestoR = re.compile(r'^[A-Za-z\s]+$')
 
+
 #Obtener los datos del usuario: 
     codigo_empleado = int(validar_input(codigoEmpleadoR, "Ingrese el código del empleado: "))
     nombre = validar_input(nombreR, "Ingrese el nombre del empleado: ")
@@ -52,7 +53,7 @@ def postEmpleado():
         "codigo_jefe": codigo_jefe,
         "puesto": puesto
     }
-    
+
     url = "http://154.38.171.54:5003/empleados"
     data = json.dumps(empleado)
     peticion = requests.post(url,data)
