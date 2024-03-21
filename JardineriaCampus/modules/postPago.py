@@ -51,18 +51,28 @@ def menu():
         
         
         """)
-        opcion = int(input("\nSelecione una de las opciones: "))
+        
 
+        try: 
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion >=0 and opcion<=3:
+                if(opcion == 1):
+                    print(tabulate(postPago(), headers="keys", tablefmt="github"))
+                elif(opcion == 2):
+                    id = input("Ingrese el ID del pago que desea eliminar: ")
+                    print(tabulate(deletePago(id), headers="keys", tablefmt="github"))
+                elif(opcion == 3):
+                    id = input("Ingrese el ID del pago que desea actualizar: ")
+                    print(tabulate(updatePago(id), headers="keys", tablefmt="github"))
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
 
-        if opcion >=0 and opcion<=3:
-            if(opcion == 1):
-                print(tabulate(postPago(), headers="keys", tablefmt="github"))
-            elif(opcion == 2):
-                id = input("Ingrese el ID del pago que desea eliminar: ")
-                print(tabulate(deletePago(id), headers="keys", tablefmt="github"))
-            elif(opcion == 3):
-                id = input("Ingrese el ID del pago que desea actualizar: ")
-                print(tabulate(updatePago(id), headers="keys", tablefmt="github"))
-            elif(opcion == 0):
-                break
-        input("Presione una tecla para continuar.....")
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+            
