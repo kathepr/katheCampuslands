@@ -2,18 +2,57 @@ import json
 import requests
 from tabulate import tabulate
 import modules.getPedido as datosPedido
+import re
+
+
+
+def validar_input(patron, mensaje):
+    while True: 
+        entrada = input(mensaje)
+        if patron.match(entrada):
+            confirmacion = input(f"¿Confirma el ingreso de este dato '{entrada}'? (S/N) ").strip().lower()
+            if confirmacion == "s":
+                return entrada
+        else:
+            print("El dato no cumple con los parametros establecidos. Vuelva a intentarlo.")
+
+
+
 
 def postPedido():
+
+#Expresiones regulares para cada dato:
+    codigoPR = re.compile(r'^\d+$')
+    fechaPedidoR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
+    fechaEsperadaR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
+    fechaEntregaR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
+    estadoR= re.compile(r'^[a-zA-Z]+$')
+    comentarioR= re.compile(r'^[^\n]+$')
+    codigoClienteR= re.compile(r'^[0-9]+$')
+
+
+#Obtener los datos del usuario:    
+    codigo_pedido = int(validar_input(codigoPR, "Ingrese el código del pedido: ")),
+    fecha_pedido = validar_input(fechaPedidoR, "Ingrese la fecha (año - mes - día): "),
+    fecha_esperada = input(fechaEsperadaR, "Ingrese la fecha esperada (año-mes-día): "),
+    fechaEntrega = input(fechaEntregaR, "Ingrese la fecha de entrega (año-mes-día): "),
+    estado = validar_input(estadoR, "Ingrese estado del pedido: "),
+    comentario = validar_input(comentarioR, "Ingrese comentarios: "),
+    codigo_cliente = int(validar_input(codigoClienteR, "Ingrese el código del cliente: ")),
+    
+
     pedido = {
 
-        "codigo_pedido": int(input("Ingrese el código del pedido: ")),
-        "fecha_pedido": input("Ingrese la fecha (año - mes - día): "),
-        "fecha_esperada": input("Ingrese la fecha esperada (año-mes-día): "),
-        "fechaEntrega": input("Ingrese la fecha de entrega (año-mes-día): "),
-        "estado": input("Ingrese estado del pedido: "),
-        "comentario": input("Ingrese comentarios: "),
-        "codigo_cliente": int(input("Ingrese el código del cliente: ")),
+        "codigo_pedido": codigo_pedido,
+        "fecha_pedido": fecha_pedido,
+        "fecha_esperada": fecha_esperada,
+        "fechaEntrega": fechaEntrega,
+        "estado": estado,
+        "comentario": comentario,
+        "codigo_cliente": codigo_cliente
+
         }
+    
     url = "http://154.38.171.54:5007/pedidos"
     data = json.dumps(pedido)
     peticion = requests.post(url,data)
@@ -29,15 +68,37 @@ def deletePedido(id):
 
 
 def updatePedido(id):
+
+
+#Expresiones regulares para cada dato:
+    codigoPR = re.compile(r'^\d+$')
+    fechaPedidoR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
+    fechaEsperadaR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
+    fechaEntregaR= re.compile(r'^[0-9]{4}-[0-9]{2}-[0-9]{2}+$')
+    estadoR= re.compile(r'^[a-zA-Z]+$')
+    comentarioR= re.compile(r'^[^\n]+$')
+    codigoClienteR= re.compile(r'^[0-9]+$')
+
+
+#Obtener los datos del usuario:    
+    codigo_pedido = int(validar_input(codigoPR, "Ingrese el código del pedido: ")),
+    fecha_pedido = validar_input(fechaPedidoR, "Ingrese la fecha (año - mes - día): "),
+    fecha_esperada = input(fechaEsperadaR, "Ingrese la fecha esperada (año-mes-día): "),
+    fechaEntrega = input(fechaEntregaR, "Ingrese la fecha de entrega (año-mes-día): "),
+    estado = validar_input(estadoR, "Ingrese estado del pedido: "),
+    comentario = validar_input(comentarioR, "Ingrese comentarios: "),
+    codigo_cliente = int(validar_input(codigoClienteR, "Ingrese el código del cliente: ")),
+    
+
     pedidoActualizado = {
 
-        "codigo_pedido": int(input("Ingrese el código del pedido: ")),
-        "fecha_pedido": input("Ingrese la fecha (año - mes - día): "),
-        "fecha_esperada": input("Ingrese la fecha esperada (año-mes-día): "),
-        "fechaEntrega": input("Ingrese la fecha de entrega (año-mes-día): "),
-        "estado": input("Ingrese estado del pedido: "),
-        "comentario": input("Ingrese comentarios: "),
-        "codigo_cliente": int(input("Ingrese el código del cliente: ")),
+        "codigo_pedido": codigo_pedido,
+        "fecha_pedido": fecha_pedido,
+        "fecha_esperada": fecha_esperada,
+        "fechaEntrega": fechaEntrega,
+        "estado": estado,
+        "comentario": comentario,
+        "codigo_cliente": codigo_cliente
         }
     
     url = (f"http://154.38.171.54:5007/pedidos/{id}")
@@ -51,9 +112,10 @@ def updatePedido(id):
 def menu():
     while True:
         print("""
-        
-        ADMINISTRAR DATOS DE PEDIDOS:
-
+        ***********************************
+            ADMINISTRAR DATOS DE PEDIDOS:
+        ***********************************
+              
         1. Guardar un pedido nuevo
         2. Eliminar un pedido
         3. Actualizar pedido
