@@ -276,7 +276,7 @@ def getAllClientesSinPago():
 
 def menu():
    while True: 
-    print("""
+        print("""
     
                                                         ******************************************      
                                                                 Reportes de los clientes
@@ -300,47 +300,63 @@ def menu():
 
 
         """)
-    opcion = int(input("\nSeleccione una de las opciones "))
-    if opcion == 1:
-            print(tabulate(getAllClientName(), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 2:
-            codigoCliente = int(input("Ingrese el código del cliente "))
-            print(tabulate(getOneClientCodigo(codigoCliente), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 3:
-            limite = float(input("Ingrese el limite de credito de los clientes que desea visualizar: "))
-            ciudad = input("Ingrese el nombre de la ciudad que desea filtrar: ")
-            print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 4:
-            pais = input("Ingrese el nombre del pais: ")
-            region = input("Ingrese el nombre de la región: ")
-            ciudad = input("Ingrese el nombre de la ciudad: ")
-            print(tabulate(getAllClientPaisRegionCiudad(pais, region, ciudad), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 5:
-            apellido = input("Ingrese el apellido del Director: ")
-            print(tabulate(getAllApellido(apellido), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 6:
-            fax = input("Ingrese el número del Fax: ")
-            print(tabulate(getAllFax(fax), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 7:
-            telefono = input("Ingrese el número de Télefono ")
-            print(tabulate(getAllTelefono(telefono), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 8:
-            direccion = input("Ingrese la dirección principal del cliente: ")
-            print(tabulate(getAllDireccion(direccion), headers = "keys", tablefmt= "rounded_grid"))
-    elif opcion == 9:
-            postal = input("Ingrese el código postal del cliente: ")
-            print(tabulate(getAllPostal(postal), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 10:
-            print(tabulate(getAllEspañoles(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 11:
-            print(tabulate(getAllMadrid(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion ==12:
-            print(tabulate(getAllClientsRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion ==13:
-            print(tabulate(getAllClientePagoRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 14:
-            print(tabulate(getAllClientesSinPago(), headers = "keys", tablefmt = "rounded_grid"))
-    elif opcion == 0:
-            break
+
+        try:
+            opcion = int(input("\nSeleccione una de las opciones "))
+            if opcion>=0 and opcion<15:
+                if opcion == 1:
+                        print(tabulate(getAllClientName(), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 2:
+                        codigoCliente = int(input("Ingrese el código del cliente "))
+                        print(tabulate(getOneClientCodigo(codigoCliente), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 3:
+                        limite = float(input("Ingrese el limite de credito de los clientes que desea visualizar: "))
+                        ciudad = input("Ingrese el nombre de la ciudad que desea filtrar: ")
+                        print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 4:
+                        pais = input("Ingrese el nombre del pais: ")
+                        region = input("Ingrese el nombre de la región: ")
+                        ciudad = input("Ingrese el nombre de la ciudad: ")
+                        print(tabulate(getAllClientPaisRegionCiudad(pais, region, ciudad), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 5:
+                        apellido = input("Ingrese el apellido del Director: ")
+                        print(tabulate(getAllApellido(apellido), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 6:
+                        fax = input("Ingrese el número del Fax: ")
+                        print(tabulate(getAllFax(fax), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 7:
+                        telefono = input("Ingrese el número de Télefono ")
+                        print(tabulate(getAllTelefono(telefono), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 8:
+                        direccion = input("Ingrese la dirección principal del cliente: ")
+                        print(tabulate(getAllDireccion(direccion), headers = "keys", tablefmt= "rounded_grid"))
+                elif opcion == 9:
+                        postal = input("Ingrese el código postal del cliente: ")
+                        print(tabulate(getAllPostal(postal), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 10:
+                        print(tabulate(getAllEspañoles(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 11:
+                        print(tabulate(getAllMadrid(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion ==12:
+                        print(tabulate(getAllClientsRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion ==13:
+                        print(tabulate(getAllClientePagoRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 14:
+                        print(tabulate(getAllClientesSinPago(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 0:
+                        break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+
+
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+            
+
     
+                
 

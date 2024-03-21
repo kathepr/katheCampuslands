@@ -64,13 +64,26 @@ def menu():
         3. Obtener información del nombre, apelidos y puesto de aquellos empleados que NO son representantes de ventas
 
         """)
-        opcion = int(input("\nSeleccione una de las opciones "))
-        if opcion == 1:
-            codigo = int(input("Ingrese el código del jefe: "))
-            print(tabulate(getAllNombreApellidoEmailJefe(codigo), headers = "keys", tablefmt = "rounded_grid"))
-        elif opcion == 2:
-            print(tabulate(getNombreApellidosEmailJefeEmpresa(), headers = "keys", tablefmt = "rounded_grid"))
-        elif opcion == 3:
-            print(tabulate(getAllNoRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
-        elif opcion == 0:
-            break
+
+        try: 
+            opcion = int(input("\nSeleccione una de las opciones "))
+            if opcion>=0 and opcion<4:
+                if opcion == 1:
+                    codigo = int(input("Ingrese el código del jefe: "))
+                    print(tabulate(getAllNombreApellidoEmailJefe(codigo), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 2:
+                    print(tabulate(getNombreApellidosEmailJefeEmpresa(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 3:
+                    print(tabulate(getAllNoRepresentante(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 0:
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+                        

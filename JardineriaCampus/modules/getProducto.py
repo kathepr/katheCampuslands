@@ -59,10 +59,24 @@ def menu():
 
     """)
 
-        opcion = int(input("\nSelecione una de las opciones: "))
-        if(opcion == 1):
-            gama = input("Ingrese la gama que deseas filtrar: ")
-            stock = int(input("Ingrese las unidades que seas mostrar: "))
-            print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="rounded_grid"))
-        elif(opcion == 0):
-            break
+        try: 
+            opcion = int(input("\nSelecione una de las opciones: "))
+            if opcion == 0 or opcion == 1:
+                if(opcion == 1):
+                    gama = input("Ingrese la gama que deseas filtrar: ")
+                    stock = int(input("Ingrese las unidades que seas mostrar: "))
+                    print(tabulate(getAllStockPriceGama(gama, stock), headers="keys", tablefmt="rounded_grid"))
+                elif(opcion == 0):
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+            
+
+    

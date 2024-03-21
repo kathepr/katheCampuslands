@@ -54,11 +54,23 @@ def menu():
 
 
     """)
-        opcion = int(input("\nSeleccione una de las opciones "))
-        if opcion == 1:
-            print(tabulate(getAllCodigoCiudad(), headers = "keys", tablefmt = "rounded_grid"))
-        elif opcion ==2:
-            pais = input("Ingrese el pais correspondiente al listado de oficinas que desea consultar: ")
-            print(tabulate(getAllCiudadTelefono(pais), headers = "keys", tablefmt = "rounded_grid"))
-        elif opcion == 0:
-            break
+        try:
+            opcion = int(input("\nSeleccione una de las opciones "))
+            if opcion>=0 and opcion<3:
+                if opcion == 1:
+                    print(tabulate(getAllCodigoCiudad(), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion ==2:
+                    pais = input("Ingrese el pais correspondiente al listado de oficinas que desea consultar: ")
+                    print(tabulate(getAllCiudadTelefono(pais), headers = "keys", tablefmt = "rounded_grid"))
+                elif opcion == 0:
+                    break
+            else:
+                print("\nOJO: No existe esa opción, por favor vuelva a intentarlo")
+
+        except ValueError:
+            print("""
+                  -----------------------------------------------------------------------------
+                  Solo se permiten los NÚMEROS ENTEROS correspondientes a la OPCIÓN ESCOGIDA
+                                        Por favor, intentelo de nuevo.
+                  -----------------------------------------------------------------------------""")
+            
