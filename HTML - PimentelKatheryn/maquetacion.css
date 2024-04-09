@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+}
+
+#contenedor {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/*
+position: relative: Establece que la posición del elemento se calcula respecto a su posición original en el flujo del documento.
+
+width: 100%: Hace que el ancho del elemento sea igual al 100% del ancho de su contenedor padre.
+
+height: 100vh: Define que la altura del elemento será igual al 100% de la altura visible de la ventana del navegador (viewport height). El viewport es la parte visible de la ventana del navegador. Por lo tanto, este estilo hace que el elemento ocupe toda la altura de la ventana del navegador sin importar el contenido 
+
+*/
+
+
+.izquierda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; 
+    height: 100%;
+}
+
+.derecha {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%; 
+    height: 100%;
+}
+
+.izquierda img,
+.derecha img {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px; 
+}
