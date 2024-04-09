@@ -24,6 +24,7 @@ height: 100vh: Define que la altura del elemento será igual al 100% de la altur
     left: 0;
     width: 50%; 
     height: 100%;
+    margin-bottom:10px;
 }
 
 .derecha {
@@ -38,5 +39,38 @@ height: 100vh: Define que la altura del elemento será igual al 100% de la altur
 .derecha img {
     display: block;
     width: 100%;
-    margin-bottom: 10px; 
+    margin-bottom:10px;
+}
+
+
+
+#bomba{
+    padding-top:10px;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+}
+
+#oni{
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    max-height: 510px;
+    width: auto;
+    height: auto;
+}
+
+#abolisher{
+    padding-top:10px;
+    max-width: 445px;
+    width: auto;
+    height: auto;
+}
+
+#saco{
+    padding-left: 10px;
+    max-height: 560px;
+    width: auto;
+    height: auto;
+    
 }
