@@ -137,7 +137,6 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     width:105px;
     height: 35px;
     font-family:"EncodeSans-Medium";
-    color: var(--color-2);
     /* background: orange; */
     text-decoration: none;
     display: flex;
@@ -145,12 +144,15 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     gap: 5px;
     padding: 5px;
     border-radius: 8px;
-    background: var(--color-1);
-    color: var(--color-5);
-    border: 1px solid var(--color-3)
+    border: 1px solid var(--color-3);
+    color: var(--color-1);
+    background: var(--color-5);
+
 }
 
 .nav__ul li a:hover{
+    filter: invert(1)
+
     /* background: var(--color-1);
     color: var(--color-2) */
     
