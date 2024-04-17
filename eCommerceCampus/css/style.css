@@ -159,7 +159,7 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 }
 
 .footer{
-    background: red;
+    /* background: red; */
     position: fixed;
     bottom:10px;
     width: 100%;
@@ -167,7 +167,7 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 }
 
 .footer__ul{
-    background: var(--color-2);
+    background: var(--color-4);
     height: 55px;
     display: flex;
     flex-direction: row;
