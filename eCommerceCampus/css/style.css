@@ -55,8 +55,9 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 
 
 .nav{
-    background: red;
+
     padding: var(--space-layout-padding-lr);
+    margin-top: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -65,7 +66,7 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 }
 
 .nav__search{
-    background: yellow;
+
     position: relative;
 
 }
@@ -107,5 +108,59 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 }
 
 .main{
-    background: blue;
+    /* background: red; */
+    padding: var(--space-layout-padding-lr);
+    margin-top: 15px;
 }
+
+.main__nav{
+    /* background: violet;
+    padding: 10px; */
+
+}
+
+.nav__ul{
+    /* background: darkgray; */
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    overflow-x: scroll;
+}
+
+.nav__ul li{
+    list-style: none;
+}
+
+.nav__ul li a{
+    width:105px;
+    height: 35px;
+    font-family:"EncodeSans-Medium";
+    color: var(--color-2);
+    /* background: orange; */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    background: var(--color-1);
+    color: var(--color-5);
+    border: 1px solid var(--color-3)
+}
+
+.nav__ul li a:hover{
+    /* background: var(--color-1);
+    color: var(--color-2) */
+    
+}
+
+.ul__li{
+
+}
+
+.li__a{
+
+}
+            
