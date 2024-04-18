@@ -6,6 +6,8 @@
     --color-5: #FFF;
     --space-layout-padding-lr: 0px 15px;
     --space-layout-padding-top: 15px;
+    --layout_imagen-width: 154px;
+    --layout_imagen-height: 211px;
 }
 @font-face {
     font-family: "EncodeSans-Regular";

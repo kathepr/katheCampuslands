@@ -193,3 +193,78 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     width: 24px;
     height: 24px;
 }
+
+.main__article{
+    height: 70vh;
+    margin-top: 15px;
+    background: red;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+
+}
+
+.main__article section{
+    display: flex;
+    justify-content: center;
+    background: green;
+    width: 48%;
+    height: 290px;
+    margin-bottom: 4%;
+
+}
+
+
+
+.section__front_page{
+    position: relative;
+    margin-top: 5px;
+    border-radius: 14px;
+    width: var(--layout_imagen-width);
+    height: var(--layout_imagen-height);
+    overflow: hidden;
+}
+
+.section__front_page img{
+    position: absolute;
+}
+
+
+.section__front_page img:first-child{
+    width: var(--layout_imagen-width);
+    height: var(--layout_imagen-height);
+    height: 211px;
+    object-fit: cover;
+}
+
+.section__front_page img:last-child{
+    top: 10px;
+    right: 10px;
+}
+
+
+
+
+.main__article section:nth-child(4n+1),
+.main__article section:nth-child(4n+4){
+    background: orange;
+    height: 260px;
+}
+
+/* section:nth-child(4n+1): Esta parte se refiere a los elementos <section> que son el primer hijo, el quinto hijo, el noveno hijo y así sucesivamente dentro de su contenedor padre (en este caso, la clase .main__article). El 4n+1 significa que la fórmula 4n genera números que son múltiplos de 4, y al sumarle 1 (+1), selecciona el primer elemento de cada grupo de 4 elementos. En otras palabras, seleccionará todos los elementos <section> que sean el primer hijo, quinto hijo, noveno hijo, etc. 
+
+section:nth-child(4n+4): Similar al primer selector, selecciona los elementos <section> que son el cuarto hijo, octavo hijo, duodécimo hijo y así sucesivamente dentro de su contenedor padre.*/
+
+
+
+.main__article section:nth-child(4n-1){
+    background: violet;
+    margin-top:-30px
+
+}
+
+/* :nth-child(4n-1): Esta parte del selector se refiere a los elementos que son el tercer hijo, séptimo hijo, undécimo hijo, y así sucesivamente, dentro de su contenedor padre (en este caso, elementos <section> dentro de .main__article).
+
+4n-1: La fórmula 4n genera números que son múltiplos de 4, y al restarle 1 (-1), selecciona el tercer elemento de cada grupo de 4 elementos. Esto significa que seleccionará todos los elementos que son el tercer hijo, séptimo hijo, undécimo hijo, y así sucesivamente. */
+
