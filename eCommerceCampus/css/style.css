@@ -197,7 +197,6 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 .main__article{
     height: 70vh;
     margin-top: 15px;
-    background: red;
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -210,9 +209,8 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: green;
+
     width: 48%;
-    height: 290px;
     margin-bottom: 4%;
 
 }
@@ -231,6 +229,7 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 
 .section__front_page img{
     position: absolute;
+    
 }
 
 
@@ -243,11 +242,15 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 .section__front_page img:last-child{
     top: 10px;
     right: 10px;
+    background-color: var(--color-4);
+    padding: 5px;
+    border-radius: 100px;
 }
 
 .main__article section h5{
     font-family: "EncodeSans-SemiBold";
     color: var(--color-2);
+    margin-bottom: 9px;
 }
 
 .main__article section small{
@@ -279,8 +282,7 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 
 .main__article section:nth-child(4n+1),
 .main__article section:nth-child(4n+4){
-    background: orange;
-    height: 260px;
+    height: 380px;
 }
 
 /* section:nth-child(4n+1): Esta parte se refiere a los elementos <section> que son el primer hijo, el quinto hijo, el noveno hijo y así sucesivamente dentro de su contenedor padre (en este caso, la clase .main__article). El 4n+1 significa que la fórmula 4n genera números que son múltiplos de 4, y al sumarle 1 (+1), selecciona el primer elemento de cada grupo de 4 elementos. En otras palabras, seleccionará todos los elementos <section> que sean el primer hijo, quinto hijo, noveno hijo, etc. 
@@ -290,8 +292,7 @@ section:nth-child(4n+4): Similar al primer selector, selecciona los elementos <s
 
 
 .main__article section:nth-child(4n-1){
-    background: violet;
-    margin-top:-30px
+    margin-top:-54px
 
 }
 
