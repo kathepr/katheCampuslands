@@ -164,6 +164,8 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     bottom:10px;
     width: 100%;
     padding: var(--space-layout-padding-lr);
+
+    
 }
 
 .footer__ul{
@@ -174,6 +176,12 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     justify-content: space-evenly;
     align-items: center;
     border-radius: 40px;
+
+    /* Creación de difuminado el el footer */
+    /* La sintaxis general de box-shadow es la siguiente:
+    
+    box-shadow: [horizontal offset] [vertical offset] [blur radius] [spread radius] [color]; */
+    box-shadow: 0px 0px 55px 10px #fff;
 }
 
 
@@ -194,9 +202,17 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     height: 24px;
 }
 
+.footer__ul li a img{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
 .main__article{
     height: 70vh;
     margin-top: 15px;
+    padding-bottom: 12vh;
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -233,18 +249,20 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
 }
 
 
-.section__front_page img:first-child{
+.section__front_page a img:first-child{
     width: var(--layout_imagen-width);
     height: var(--layout_imagen-height);
     object-fit: cover;
 }
 
-.section__front_page img:last-child{
+.section__front_page > img:last-child{
     top: 10px;
     right: 10px;
     background-color: var(--color-4);
     padding: 5px;
-    border-radius: 100px;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
 }
 
 .main__article section h5{
