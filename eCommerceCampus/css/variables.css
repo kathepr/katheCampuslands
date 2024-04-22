@@ -9,8 +9,10 @@
     --layout_imagen-width: 100%;
     --layout_imagen-height: 350px;
 
-    --layout_imagen-width-detail: 100%;
-    --layout_imagen-height-detail: 385px;
+    --layout_imagen-width-checkout: 70px;
+    --layout_imagen-height-checkout: 70px;
+
+    --layout_imagen-width-detail:
 }
 @font-face {
     font-family: "EncodeSans-Regular";
