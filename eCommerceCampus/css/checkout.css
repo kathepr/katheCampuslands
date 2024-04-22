@@ -7,11 +7,11 @@
 }
 
 .header{
-    background: red;
+    /* background: red; */
 }
 
 .header__nav{
-    background: violet;
+    /* background: violet; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +19,7 @@
 }
 
 .header__nav div:nth-child(2){
-    background: blue;
+    /* background: blue; */
     font-family: "EncodeSans-SemiBold";
     
 }
@@ -34,8 +34,10 @@
 }
 
 .checkout__details {
-    /* background: blue; */
-    padding: var(--space-layout-padding-top);
+    /* background: green; */
+    height: 275px;
+    overflow-y: scroll;
+
 
 }
 
@@ -44,6 +46,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 10px 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--color-3)
     
     
 }
