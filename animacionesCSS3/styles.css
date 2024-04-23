@@ -1,8 +1,27 @@
-.escena {
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-.paisaje {
+
+
+.escena {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    background-image: url(/imagenes/paisaje.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    margin:0;
+    position: relative;
+
 }
 .nube {
+
 }
 .sol {
 }
