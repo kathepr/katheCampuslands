@@ -130,6 +130,20 @@
 
 }
 
+
+.section__shipping{
+    margin-top: 20px;
+}
+
+.shipping__title{
+    margin-bottom: 15px;
+}
+
+.section__card{
+    margin-bottom: 15px;
+}
+
+
 .dropdown__button {
     background-color: var(--color-3);
     border-radius: 5px;
@@ -194,4 +208,54 @@
 
 .dropdown:hover .dropdown__button .shopping__option{
     filter: invert(1);
+}
+
+.section__bill{
+    /* background: red; */
+    margin-bottom: 25px;
+
+}
+.section__bill span{
+    font-family:"EncodeSans-SemiBold";
+}
+.bill__total{
+    /* background: blue; */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.bill__fee{
+    /* background: violet; */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--color-3);
+}
+.bill__subtotal{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.button__pay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.button__pay button{
+    background-color: var(--color-4);
+    border: none;
+    color: var(--color-5);
+    font-family: "EncodeSans-Bold";
+    font-size: 14px;
+    width: 335px;
+    height: 56px;
+    border-radius: 40px;
+    padding: 18px 16px;
+
 }
