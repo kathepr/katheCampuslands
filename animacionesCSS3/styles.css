@@ -7,7 +7,7 @@
 
 
 body {
-    background-image: url(/imagenes/paisaje.svg);
+    background-image: url(imagenes/paisaje.svg);
     background-repeat: no-repeat;
     margin:0;
     overflow: hidden;
