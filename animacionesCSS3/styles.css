@@ -6,28 +6,110 @@
 }
 
 
-.escena {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-background);
+body {
     background-image: url(/imagenes/paisaje.svg);
-    background-position: center;
     background-repeat: no-repeat;
+    margin:0;
+    overflow: hidden;
+    position: relative;
     height: 100vh;
     width: 100vw;
-    margin:0;
-    position: relative;
 
 }
 .nube {
-
+    width: 200px;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: 2;
+    animation: nube 8s linear;
 }
 .sol {
+    width: 150px;
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    animation: sol 1s linear 5s infinite alternate; 
 }
+    
 .lluvia {
+    display: flex;
+    width: 50px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    z-index: 1;
+    animation: lluvia 5s ease-in;
+    
 }
 .flor {
+    width: 200px;
+    position: absolute;
+    bottom: 0;
+    top: 40%;
+    left: 50%;
+    opacity: 0;
+    animation: flor 0.5s linear 8s forwards; 
 }
+
 .mensaje {
+}
+
+@keyframes nube {
+    0% {
+        right: -150px;
+    }
+    40% {
+        right: 30%;
+    }
+    60% {
+        right: 30%;
+    }
+    100% {
+        right: 100%;
+    }
+
+}
+@keyframes sol {
+    0% {
+        opacity: 1; /* Sol completamente visible */
+    }
+    50% {
+        opacity: 0; /* Sol invisible */
+    }
+    100% {
+        opacity: 1; /* Sol completamente visible */
+    }
+}
+
+@keyframes lluvia{
+
+    0% {
+        opacity: 0;
+        top: -50px; 
+      }
+    
+    50% {
+        opacity: 0;
+        top: -50px; 
+    }
+
+    60% {
+        opacity: 0;
+        top: 50px; 
+    }
+
+    100% {
+        top: 200px;
+        opacity: 1; 
+      }
+}
+
+@keyframes flor {
+    0% {
+        opacity: 0; /* La flor está invisible al principio */
+    }
+    100% {
+        opacity: 1; /* La flor aparece completamente */
+    }
 }
