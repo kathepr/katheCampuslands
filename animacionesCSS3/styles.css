@@ -17,7 +17,7 @@ body {
 
 }
 .nube {
-    width: 200px;
+    width: 300px;
     position: absolute;
     top: 0;
     right: 100%;
@@ -37,16 +37,16 @@ body {
     width: 50px;
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 70%;
     z-index: 1;
-    animation: lluvia 5s ease-in;
+    animation: lluvia 4s ease-in;
     
 }
 .flor {
     width: 200px;
     position: absolute;
     bottom: 0;
-    top: 40%;
+    top: 80%;
     left: 50%;
     opacity: 0;
     animation: flor 0.5s linear 8s forwards; 
@@ -89,14 +89,24 @@ body {
         top: -50px; 
       }
     
-    50% {
+    20% {
         opacity: 0;
         top: -50px; 
     }
 
+    30%{
+        opacity: 0.5; 
+        top: 20px;
+    }
+
     60% {
-        opacity: 0;
+        opacity: 0.5;
         top: 50px; 
+    }
+
+    80% {
+        opacity: 0.5; 
+        top: 150px; 
     }
 
     100% {
