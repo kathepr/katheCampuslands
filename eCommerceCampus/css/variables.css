@@ -1,8 +1,8 @@
 :root{
-    --color-1: #292526;
+    --color-1: #c36;
     --color-2: #1B2028;
-    --color-3: #A4AAAD;
-    --color-4: #111111;
+    --color-3: #ce887e;
+    --color-4: #c36;
     --color-5: #FFF;
     --space-layout-padding-lr: 0px 15px;
     --space-layout-padding-top: 15px;
@@ -12,7 +12,9 @@
     --layout_imagen-width-checkout: 70px;
     --layout_imagen-height-checkout: 70px;
 
-    
+    #b3af54
+    #7f54b3
+
 }
 @font-face {
     font-family: "EncodeSans-Regular";
