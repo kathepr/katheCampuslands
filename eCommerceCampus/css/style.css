@@ -147,14 +147,14 @@ initial: Establece el valor predeterminado de overflow, que es visible. */
     border: 1px solid var(--color-3);
     color: var(--color-1);
     background: var(--color-5);
+    transition: all 0.2s linear;
+
 
 }
 
 .nav__ul li a:hover{
-    filter: invert(1)
-
-    /* background: var(--color-1);
-    color: var(--color-2) */
+    background-color: var(--color-6-hover);
+    
     
 }
 
